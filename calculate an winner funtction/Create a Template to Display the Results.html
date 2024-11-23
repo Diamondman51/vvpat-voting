@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Winner</title>
+</head>
+<body>
+    {% if winner %}
+        <h1>The winner is {{ winner }} with {{ max_votes }} votes.</h1>
+    {% else %}
+        <h1>No votes were found in the database.</h1>
+    {% endif %}
+</body>
+</html>
