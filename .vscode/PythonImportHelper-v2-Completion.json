@@ -1,0 +1,700 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "get_asgi_application",
+        "importPath": "django.core.asgi",
+        "description": "django.core.asgi",
+        "isExtraImport": true,
+        "detail": "django.core.asgi",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "get_wsgi_application",
+        "importPath": "django.core.wsgi",
+        "description": "django.core.wsgi",
+        "isExtraImport": true,
+        "detail": "django.core.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "Director",
+        "importPath": "vvpat.models",
+        "description": "vvpat.models",
+        "isExtraImport": true,
+        "detail": "vvpat.models",
+        "documentation": {}
+    },
+    {
+        "label": "Position",
+        "importPath": "vvpat.models",
+        "description": "vvpat.models",
+        "isExtraImport": true,
+        "detail": "vvpat.models",
+        "documentation": {}
+    },
+    {
+        "label": "President",
+        "importPath": "vvpat.models",
+        "description": "vvpat.models",
+        "isExtraImport": true,
+        "detail": "vvpat.models",
+        "documentation": {}
+    },
+    {
+        "label": "Voter",
+        "importPath": "vvpat.models",
+        "description": "vvpat.models",
+        "isExtraImport": true,
+        "detail": "vvpat.models",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "TestCase",
+        "importPath": "django.test",
+        "description": "django.test",
+        "isExtraImport": true,
+        "detail": "django.test",
+        "documentation": {}
+    },
+    {
+        "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "Counter",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
+        "label": "cv2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cv2",
+        "description": "cv2",
+        "detail": "cv2",
+        "documentation": {}
+    },
+    {
+        "label": "face_recognition",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "face_recognition",
+        "description": "face_recognition",
+        "detail": "face_recognition",
+        "documentation": {}
+    },
+    {
+        "label": "face_locations",
+        "importPath": "face_recognition",
+        "description": "face_recognition",
+        "isExtraImport": true,
+        "detail": "face_recognition",
+        "documentation": {}
+    },
+    {
+        "label": "face_encodings",
+        "importPath": "face_recognition",
+        "description": "face_recognition",
+        "isExtraImport": true,
+        "detail": "face_recognition",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "qrcode",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "qrcode",
+        "description": "qrcode",
+        "detail": "qrcode",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "application",
+        "kind": 5,
+        "importPath": "basic.backend.base.asgi",
+        "description": "basic.backend.base.asgi",
+        "peekOfCode": "application = get_asgi_application()",
+        "detail": "basic.backend.base.asgi",
+        "documentation": {}
+    },
+    {
+        "label": "BASE_DIR",
+        "kind": 5,
+        "importPath": "basic.backend.base.settings",
+        "description": "basic.backend.base.settings",
+        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = 'django-insecure-0wr$=^3ai2^c8xenb8f+g=168k$+=r+8*$3p1vi*8fgly$s=kj'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [",
+        "detail": "basic.backend.base.settings",
+        "documentation": {}
+    },
+    {
+        "label": "SECRET_KEY",
+        "kind": 5,
+        "importPath": "basic.backend.base.settings",
+        "description": "basic.backend.base.settings",
+        "peekOfCode": "SECRET_KEY = 'django-insecure-0wr$=^3ai2^c8xenb8f+g=168k$+=r+8*$3p1vi*8fgly$s=kj'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',",
+        "detail": "basic.backend.base.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DEBUG",
+        "kind": 5,
+        "importPath": "basic.backend.base.settings",
+        "description": "basic.backend.base.settings",
+        "peekOfCode": "DEBUG = True\nALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',",
+        "detail": "basic.backend.base.settings",
+        "documentation": {}
+    },
+    {
+        "label": "ALLOWED_HOSTS",
+        "kind": 5,
+        "importPath": "basic.backend.base.settings",
+        "description": "basic.backend.base.settings",
+        "peekOfCode": "ALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'vvpat',",
+        "detail": "basic.backend.base.settings",
+        "documentation": {}
+    },
+    {
+        "label": "INSTALLED_APPS",
+        "kind": 5,
+        "importPath": "basic.backend.base.settings",
+        "description": "basic.backend.base.settings",
+        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'vvpat',\n]\nMIDDLEWARE = [",
+        "detail": "basic.backend.base.settings",
+        "documentation": {}
+    },
+    {
+        "label": "MIDDLEWARE",
+        "kind": 5,
+        "importPath": "basic.backend.base.settings",
+        "description": "basic.backend.base.settings",
+        "peekOfCode": "MIDDLEWARE = [\n    'django.middleware.security.SecurityMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n]\nROOT_URLCONF = 'base.urls'",
+        "detail": "basic.backend.base.settings",
+        "documentation": {}
+    },
+    {
+        "label": "ROOT_URLCONF",
+        "kind": 5,
+        "importPath": "basic.backend.base.settings",
+        "description": "basic.backend.base.settings",
+        "peekOfCode": "ROOT_URLCONF = 'base.urls'\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',",
+        "detail": "basic.backend.base.settings",
+        "documentation": {}
+    },
+    {
+        "label": "TEMPLATES",
+        "kind": 5,
+        "importPath": "basic.backend.base.settings",
+        "description": "basic.backend.base.settings",
+        "peekOfCode": "TEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',",
+        "detail": "basic.backend.base.settings",
+        "documentation": {}
+    },
+    {
+        "label": "WSGI_APPLICATION",
+        "kind": 5,
+        "importPath": "basic.backend.base.settings",
+        "description": "basic.backend.base.settings",
+        "peekOfCode": "WSGI_APPLICATION = 'base.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/5.1/ref/settings/#databases\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}\n# Password validation",
+        "detail": "basic.backend.base.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DATABASES",
+        "kind": 5,
+        "importPath": "basic.backend.base.settings",
+        "description": "basic.backend.base.settings",
+        "peekOfCode": "DATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}\n# Password validation\n# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators\nAUTH_PASSWORD_VALIDATORS = [\n    {",
+        "detail": "basic.backend.base.settings",
+        "documentation": {}
+    },
+    {
+        "label": "AUTH_PASSWORD_VALIDATORS",
+        "kind": 5,
+        "importPath": "basic.backend.base.settings",
+        "description": "basic.backend.base.settings",
+        "peekOfCode": "AUTH_PASSWORD_VALIDATORS = [\n    {\n        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',\n    },",
+        "detail": "basic.backend.base.settings",
+        "documentation": {}
+    },
+    {
+        "label": "LANGUAGE_CODE",
+        "kind": 5,
+        "importPath": "basic.backend.base.settings",
+        "description": "basic.backend.base.settings",
+        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "detail": "basic.backend.base.settings",
+        "documentation": {}
+    },
+    {
+        "label": "TIME_ZONE",
+        "kind": 5,
+        "importPath": "basic.backend.base.settings",
+        "description": "basic.backend.base.settings",
+        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "detail": "basic.backend.base.settings",
+        "documentation": {}
+    },
+    {
+        "label": "USE_I18N",
+        "kind": 5,
+        "importPath": "basic.backend.base.settings",
+        "description": "basic.backend.base.settings",
+        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "detail": "basic.backend.base.settings",
+        "documentation": {}
+    },
+    {
+        "label": "USE_TZ",
+        "kind": 5,
+        "importPath": "basic.backend.base.settings",
+        "description": "basic.backend.base.settings",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "detail": "basic.backend.base.settings",
+        "documentation": {}
+    },
+    {
+        "label": "STATIC_URL",
+        "kind": 5,
+        "importPath": "basic.backend.base.settings",
+        "description": "basic.backend.base.settings",
+        "peekOfCode": "STATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "detail": "basic.backend.base.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_AUTO_FIELD",
+        "kind": 5,
+        "importPath": "basic.backend.base.settings",
+        "description": "basic.backend.base.settings",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "detail": "basic.backend.base.settings",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "basic.backend.base.urls",
+        "description": "basic.backend.base.urls",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n]",
+        "detail": "basic.backend.base.urls",
+        "documentation": {}
+    },
+    {
+        "label": "application",
+        "kind": 5,
+        "importPath": "basic.backend.base.wsgi",
+        "description": "basic.backend.base.wsgi",
+        "peekOfCode": "application = get_wsgi_application()",
+        "detail": "basic.backend.base.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "VvpatConfig",
+        "kind": 6,
+        "importPath": "basic.backend.vvpat.apps",
+        "description": "basic.backend.vvpat.apps",
+        "peekOfCode": "class VvpatConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'vvpat'",
+        "detail": "basic.backend.vvpat.apps",
+        "documentation": {}
+    },
+    {
+        "label": "Voter",
+        "kind": 6,
+        "importPath": "basic.backend.vvpat.models",
+        "description": "basic.backend.vvpat.models",
+        "peekOfCode": "class Voter(models.Model):\n    first_name = models.CharField(max_length=50)\n    last_name = models.CharField(max_length=50)\n    position = models.ForeignKey('Position', on_delete=models.CASCADE)\n    image = models.ImageField(blank=False, null=True)\n    president_id = models.ForeignKey('President', on_delete=models.CASCADE)\n    directors_id = models.OneToOneField('Director', null=True, blank=True, on_delete=models.CASCADE)\nclass Director(models.Model):\n    first_name = models.CharField(max_length=50)\n    last_name = models.CharField(max_length=50)",
+        "detail": "basic.backend.vvpat.models",
+        "documentation": {}
+    },
+    {
+        "label": "Director",
+        "kind": 6,
+        "importPath": "basic.backend.vvpat.models",
+        "description": "basic.backend.vvpat.models",
+        "peekOfCode": "class Director(models.Model):\n    first_name = models.CharField(max_length=50)\n    last_name = models.CharField(max_length=50)\n    image = models.ImageField(blank=False, null=True)\nclass President(models.Model):\n    first_name = models.CharField(max_length=50)\n    last_name = models.CharField(max_length=50)\n    image = models.ImageField(blank=False, null=True)\nclass Position(models.Model):\n    position = models.CharField(max_length=255)",
+        "detail": "basic.backend.vvpat.models",
+        "documentation": {}
+    },
+    {
+        "label": "President",
+        "kind": 6,
+        "importPath": "basic.backend.vvpat.models",
+        "description": "basic.backend.vvpat.models",
+        "peekOfCode": "class President(models.Model):\n    first_name = models.CharField(max_length=50)\n    last_name = models.CharField(max_length=50)\n    image = models.ImageField(blank=False, null=True)\nclass Position(models.Model):\n    position = models.CharField(max_length=255)",
+        "detail": "basic.backend.vvpat.models",
+        "documentation": {}
+    },
+    {
+        "label": "Position",
+        "kind": 6,
+        "importPath": "basic.backend.vvpat.models",
+        "description": "basic.backend.vvpat.models",
+        "peekOfCode": "class Position(models.Model):\n    position = models.CharField(max_length=255)",
+        "detail": "basic.backend.vvpat.models",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "basic.backend.manage",
+        "description": "basic.backend.manage",
+        "peekOfCode": "def main():\n    \"\"\"Run administrative tasks.\"\"\"\n    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'base.settings')\n    try:\n        from django.core.management import execute_from_command_line\n    except ImportError as exc:\n        raise ImportError(\n            \"Couldn't import Django. Are you sure it's installed and \"\n            \"available on your PYTHONPATH environment variable? Did you \"\n            \"forget to activate a virtual environment?\"",
+        "detail": "basic.backend.manage",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "calculate an winner funtction.Add a URL pattern in urls.py to map to the calculate_winner view",
+        "description": "calculate an winner funtction.Add a URL pattern in urls.py to map to the calculate_winner view",
+        "peekOfCode": "urlpatterns = [\n    path('calculate-winner/', views.calculate_winner, name='calculate_winner'),\n]",
+        "detail": "calculate an winner funtction.Add a URL pattern in urls.py to map to the calculate_winner view",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_winner",
+        "kind": 2,
+        "importPath": "calculate an winner funtction.Create the calculate_winner Function in Django",
+        "description": "calculate an winner funtction.Create the calculate_winner Function in Django",
+        "peekOfCode": "def calculate_winner(request):\n    # Fetch all votes from the database\n    votes = Vote.objects.values_list('candidate', flat=True)\n    # Count votes for each candidate\n    vote_count = Counter(votes)\n    # Determine the winner (candidate with the most votes)\n    if vote_count:\n        winner, max_votes = vote_count.most_common(1)[0]\n    else:\n        winner, max_votes = None, 0",
+        "detail": "calculate an winner funtction.Create the calculate_winner Function in Django",
+        "documentation": {}
+    },
+    {
+        "label": "Vote",
+        "kind": 6,
+        "importPath": "calculate an winner funtction.Set Up the Model",
+        "description": "calculate an winner funtction.Set Up the Model",
+        "peekOfCode": "class Vote(models.Model):\n    candidate = models.CharField(max_length=100)\n    def __str__(self):\n        return self.candidate",
+        "detail": "calculate an winner funtction.Set Up the Model",
+        "documentation": {}
+    },
+    {
+        "label": "voters_face_encodings",
+        "kind": 5,
+        "importPath": "face recognition.f_recognition",
+        "description": "face recognition.f_recognition",
+        "peekOfCode": "voters_face_encodings = []\nvoters_names = []\n# loading voters' images\nvoter1_image = face_recognition.load_image_file('voter1.jpg')\nvoter2_image = face_recognition.load_image_file('voter2.jpg')\nvoter3_image = face_recognition.load_image_file('voter3.jpg')\nvoter4_image = face_recognition.load_image_file('voter4.jpg')\n# encoding voters' images\nvoter1_encoding = face_recognition.face_encodings(voter1_image)[0]\nvoter2_encoding = face_recognition.face_encodings(voter2_image)[0]",
+        "detail": "face recognition.f_recognition",
+        "documentation": {}
+    },
+    {
+        "label": "voters_names",
+        "kind": 5,
+        "importPath": "face recognition.f_recognition",
+        "description": "face recognition.f_recognition",
+        "peekOfCode": "voters_names = []\n# loading voters' images\nvoter1_image = face_recognition.load_image_file('voter1.jpg')\nvoter2_image = face_recognition.load_image_file('voter2.jpg')\nvoter3_image = face_recognition.load_image_file('voter3.jpg')\nvoter4_image = face_recognition.load_image_file('voter4.jpg')\n# encoding voters' images\nvoter1_encoding = face_recognition.face_encodings(voter1_image)[0]\nvoter2_encoding = face_recognition.face_encodings(voter2_image)[0]\nvoter3_encoding = face_recognition.face_encodings(voter3_image)[0]",
+        "detail": "face recognition.f_recognition",
+        "documentation": {}
+    },
+    {
+        "label": "voter1_image",
+        "kind": 5,
+        "importPath": "face recognition.f_recognition",
+        "description": "face recognition.f_recognition",
+        "peekOfCode": "voter1_image = face_recognition.load_image_file('voter1.jpg')\nvoter2_image = face_recognition.load_image_file('voter2.jpg')\nvoter3_image = face_recognition.load_image_file('voter3.jpg')\nvoter4_image = face_recognition.load_image_file('voter4.jpg')\n# encoding voters' images\nvoter1_encoding = face_recognition.face_encodings(voter1_image)[0]\nvoter2_encoding = face_recognition.face_encodings(voter2_image)[0]\nvoter3_encoding = face_recognition.face_encodings(voter3_image)[0]\nvoter4_encoding = face_recognition.face_encodings(voter4_image)[0]\n# this adds each encoding into voters faces' encodings list earlier created",
+        "detail": "face recognition.f_recognition",
+        "documentation": {}
+    },
+    {
+        "label": "voter2_image",
+        "kind": 5,
+        "importPath": "face recognition.f_recognition",
+        "description": "face recognition.f_recognition",
+        "peekOfCode": "voter2_image = face_recognition.load_image_file('voter2.jpg')\nvoter3_image = face_recognition.load_image_file('voter3.jpg')\nvoter4_image = face_recognition.load_image_file('voter4.jpg')\n# encoding voters' images\nvoter1_encoding = face_recognition.face_encodings(voter1_image)[0]\nvoter2_encoding = face_recognition.face_encodings(voter2_image)[0]\nvoter3_encoding = face_recognition.face_encodings(voter3_image)[0]\nvoter4_encoding = face_recognition.face_encodings(voter4_image)[0]\n# this adds each encoding into voters faces' encodings list earlier created\nvoters_face_encodings.append(voter1_encoding)",
+        "detail": "face recognition.f_recognition",
+        "documentation": {}
+    },
+    {
+        "label": "voter3_image",
+        "kind": 5,
+        "importPath": "face recognition.f_recognition",
+        "description": "face recognition.f_recognition",
+        "peekOfCode": "voter3_image = face_recognition.load_image_file('voter3.jpg')\nvoter4_image = face_recognition.load_image_file('voter4.jpg')\n# encoding voters' images\nvoter1_encoding = face_recognition.face_encodings(voter1_image)[0]\nvoter2_encoding = face_recognition.face_encodings(voter2_image)[0]\nvoter3_encoding = face_recognition.face_encodings(voter3_image)[0]\nvoter4_encoding = face_recognition.face_encodings(voter4_image)[0]\n# this adds each encoding into voters faces' encodings list earlier created\nvoters_face_encodings.append(voter1_encoding)\nvoters_face_encodings.append(voter2_encoding)",
+        "detail": "face recognition.f_recognition",
+        "documentation": {}
+    },
+    {
+        "label": "voter4_image",
+        "kind": 5,
+        "importPath": "face recognition.f_recognition",
+        "description": "face recognition.f_recognition",
+        "peekOfCode": "voter4_image = face_recognition.load_image_file('voter4.jpg')\n# encoding voters' images\nvoter1_encoding = face_recognition.face_encodings(voter1_image)[0]\nvoter2_encoding = face_recognition.face_encodings(voter2_image)[0]\nvoter3_encoding = face_recognition.face_encodings(voter3_image)[0]\nvoter4_encoding = face_recognition.face_encodings(voter4_image)[0]\n# this adds each encoding into voters faces' encodings list earlier created\nvoters_face_encodings.append(voter1_encoding)\nvoters_face_encodings.append(voter2_encoding)\nvoters_face_encodings.append(voter3_encoding)",
+        "detail": "face recognition.f_recognition",
+        "documentation": {}
+    },
+    {
+        "label": "voter1_encoding",
+        "kind": 5,
+        "importPath": "face recognition.f_recognition",
+        "description": "face recognition.f_recognition",
+        "peekOfCode": "voter1_encoding = face_recognition.face_encodings(voter1_image)[0]\nvoter2_encoding = face_recognition.face_encodings(voter2_image)[0]\nvoter3_encoding = face_recognition.face_encodings(voter3_image)[0]\nvoter4_encoding = face_recognition.face_encodings(voter4_image)[0]\n# this adds each encoding into voters faces' encodings list earlier created\nvoters_face_encodings.append(voter1_encoding)\nvoters_face_encodings.append(voter2_encoding)\nvoters_face_encodings.append(voter3_encoding)\nvoters_face_encodings.append(voter4_encoding)\n# this adds each name into voters' names list earlier created",
+        "detail": "face recognition.f_recognition",
+        "documentation": {}
+    },
+    {
+        "label": "voter2_encoding",
+        "kind": 5,
+        "importPath": "face recognition.f_recognition",
+        "description": "face recognition.f_recognition",
+        "peekOfCode": "voter2_encoding = face_recognition.face_encodings(voter2_image)[0]\nvoter3_encoding = face_recognition.face_encodings(voter3_image)[0]\nvoter4_encoding = face_recognition.face_encodings(voter4_image)[0]\n# this adds each encoding into voters faces' encodings list earlier created\nvoters_face_encodings.append(voter1_encoding)\nvoters_face_encodings.append(voter2_encoding)\nvoters_face_encodings.append(voter3_encoding)\nvoters_face_encodings.append(voter4_encoding)\n# this adds each name into voters' names list earlier created\nvoters_names.append('Name of voter1')",
+        "detail": "face recognition.f_recognition",
+        "documentation": {}
+    },
+    {
+        "label": "voter3_encoding",
+        "kind": 5,
+        "importPath": "face recognition.f_recognition",
+        "description": "face recognition.f_recognition",
+        "peekOfCode": "voter3_encoding = face_recognition.face_encodings(voter3_image)[0]\nvoter4_encoding = face_recognition.face_encodings(voter4_image)[0]\n# this adds each encoding into voters faces' encodings list earlier created\nvoters_face_encodings.append(voter1_encoding)\nvoters_face_encodings.append(voter2_encoding)\nvoters_face_encodings.append(voter3_encoding)\nvoters_face_encodings.append(voter4_encoding)\n# this adds each name into voters' names list earlier created\nvoters_names.append('Name of voter1')\nvoters_names.append('Name of voter2')",
+        "detail": "face recognition.f_recognition",
+        "documentation": {}
+    },
+    {
+        "label": "voter4_encoding",
+        "kind": 5,
+        "importPath": "face recognition.f_recognition",
+        "description": "face recognition.f_recognition",
+        "peekOfCode": "voter4_encoding = face_recognition.face_encodings(voter4_image)[0]\n# this adds each encoding into voters faces' encodings list earlier created\nvoters_face_encodings.append(voter1_encoding)\nvoters_face_encodings.append(voter2_encoding)\nvoters_face_encodings.append(voter3_encoding)\nvoters_face_encodings.append(voter4_encoding)\n# this adds each name into voters' names list earlier created\nvoters_names.append('Name of voter1')\nvoters_names.append('Name of voter2')\nvoters_names.append('Name of voter3')",
+        "detail": "face recognition.f_recognition",
+        "documentation": {}
+    },
+    {
+        "label": "video_capture",
+        "kind": 5,
+        "importPath": "face recognition.f_recognition",
+        "description": "face recognition.f_recognition",
+        "peekOfCode": "video_capture = cv2.VideoCapture(0)\nwhile True:\n    # frame capturing\n    ret, frame = video_capture.read()\n    # finding face locations in the frame\n    f_locations = face_recognition.face_locations(frame)\n    f_encodings = face_recognition.face_encodings(frame, f_locations)\n    # looping through each face founded in the frame\n    for (top, right, bottom, left), f_encoding in zip(f_locations, f_encodings):\n        # checking if the face matches any voters face",
+        "detail": "face recognition.f_recognition",
+        "documentation": {}
+    },
+    {
+        "label": "generate_six_digit_number",
+        "kind": 2,
+        "importPath": "kiosk distribution.qr generation",
+        "description": "kiosk distribution.qr generation",
+        "peekOfCode": "def generate_six_digit_number():\n    return random.randint(100000, 999999)\nsix_digit_number = generate_six_digit_number()\n# QR kodni yaratish\ndef create_qr_code(data, directory, filename):\n    if not os.path.exists(directory):\n        os.makedirs(directory)  # Katalog mavjud bo'lmasa, yaratadi\n    file_path = os.path.join(directory, filename)\n    qr = qrcode.QRCode(\n        version=1,",
+        "detail": "kiosk distribution.qr generation",
+        "documentation": {}
+    },
+    {
+        "label": "create_qr_code",
+        "kind": 2,
+        "importPath": "kiosk distribution.qr generation",
+        "description": "kiosk distribution.qr generation",
+        "peekOfCode": "def create_qr_code(data, directory, filename):\n    if not os.path.exists(directory):\n        os.makedirs(directory)  # Katalog mavjud bo'lmasa, yaratadi\n    file_path = os.path.join(directory, filename)\n    qr = qrcode.QRCode(\n        version=1,\n        error_correction=qrcode.constants.ERROR_CORRECT_L,\n        box_size=10,\n        border=4,\n    )",
+        "detail": "kiosk distribution.qr generation",
+        "documentation": {}
+    },
+    {
+        "label": "six_digit_number",
+        "kind": 5,
+        "importPath": "kiosk distribution.qr generation",
+        "description": "kiosk distribution.qr generation",
+        "peekOfCode": "six_digit_number = generate_six_digit_number()\n# QR kodni yaratish\ndef create_qr_code(data, directory, filename):\n    if not os.path.exists(directory):\n        os.makedirs(directory)  # Katalog mavjud bo'lmasa, yaratadi\n    file_path = os.path.join(directory, filename)\n    qr = qrcode.QRCode(\n        version=1,\n        error_correction=qrcode.constants.ERROR_CORRECT_L,\n        box_size=10,",
+        "detail": "kiosk distribution.qr generation",
+        "documentation": {}
+    },
+    {
+        "label": "output_directory",
+        "kind": 5,
+        "importPath": "kiosk distribution.qr generation",
+        "description": "kiosk distribution.qr generation",
+        "peekOfCode": "output_directory = \"kiosk distribution/image qrcode\"  # Fayl saqlanadigan katalog\nqr_filename = f\"qr{six_digit_number}.png\"\nfile_path = create_qr_code(str(six_digit_number), output_directory, qr_filename)\nprint(f\"6 xonali son: {six_digit_number}\")\nprint(f\"QR kod fayli saqlandi: {file_path}\")",
+        "detail": "kiosk distribution.qr generation",
+        "documentation": {}
+    },
+    {
+        "label": "qr_filename",
+        "kind": 5,
+        "importPath": "kiosk distribution.qr generation",
+        "description": "kiosk distribution.qr generation",
+        "peekOfCode": "qr_filename = f\"qr{six_digit_number}.png\"\nfile_path = create_qr_code(str(six_digit_number), output_directory, qr_filename)\nprint(f\"6 xonali son: {six_digit_number}\")\nprint(f\"QR kod fayli saqlandi: {file_path}\")",
+        "detail": "kiosk distribution.qr generation",
+        "documentation": {}
+    },
+    {
+        "label": "file_path",
+        "kind": 5,
+        "importPath": "kiosk distribution.qr generation",
+        "description": "kiosk distribution.qr generation",
+        "peekOfCode": "file_path = create_qr_code(str(six_digit_number), output_directory, qr_filename)\nprint(f\"6 xonali son: {six_digit_number}\")\nprint(f\"QR kod fayli saqlandi: {file_path}\")",
+        "detail": "kiosk distribution.qr generation",
+        "documentation": {}
+    },
+    {
+        "label": "array",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "array = np.array([ord(char) for char in img_data])  # Convert characters to their ASCII values\n# Reshape the array into a 2D format (e.g., a square or rectangular shape)\nsize = int(np.ceil(np.sqrt(len(array))))  # Calculate the square size\narray = np.pad(array, (0, size**2 - len(array)), mode='constant')  # Pad to make it square\narray = array.reshape((size, size))\n# Create an image from the array\nimg = Image.fromarray(array.astype('uint8'))  # Ensure data type is uint8\nimg.show()  # Show the image",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "size",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "size = int(np.ceil(np.sqrt(len(array))))  # Calculate the square size\narray = np.pad(array, (0, size**2 - len(array)), mode='constant')  # Pad to make it square\narray = array.reshape((size, size))\n# Create an image from the array\nimg = Image.fromarray(array.astype('uint8'))  # Ensure data type is uint8\nimg.show()  # Show the image",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "array",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "array = np.pad(array, (0, size**2 - len(array)), mode='constant')  # Pad to make it square\narray = array.reshape((size, size))\n# Create an image from the array\nimg = Image.fromarray(array.astype('uint8'))  # Ensure data type is uint8\nimg.show()  # Show the image",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "array",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "array = array.reshape((size, size))\n# Create an image from the array\nimg = Image.fromarray(array.astype('uint8'))  # Ensure data type is uint8\nimg.show()  # Show the image",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "img",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "img = Image.fromarray(array.astype('uint8'))  # Ensure data type is uint8\nimg.show()  # Show the image",
+        "detail": "test",
+        "documentation": {}
+    }
+]
