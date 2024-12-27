@@ -1,3 +1,6 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +8,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Print Qr code</title>
-        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="{% static './css/style.css' %}">
     </head>
 
     <body class="print-page">
@@ -34,38 +37,36 @@
         </header>
 
 
-
-        <main>
-            <section class="mian-content mt-4 countVote">
-                <div class="container bg-transferaent">
-                    <div class="print-slip w-50 text-center">
-
-                        <!-- Search -->
-                        <div class="title fs-xxl red-color search-title text-center">Print Qr Code</div>
-                        <div class=" text-center search mt-4  flex-between">
-                            <input type="text" id="search-member" class="input-control  radius-0"
-                                placeholder="Type Password">
-                        </div>
-
-
-
-                        <!-- QR Code -->
-                        <!-- <div class="flex-center">
-                            <div class="qr-code  d-none mt-4" id="qrcode"></div>
-                        </div> -->
-
-
-                        <!-- print button -->
-                        <div class="mt-5 d-flex justify-end w-100 ">
-                            <button onclick="printSlipF('outputPrint.html')"
-                                class="btn  print-btn white-color  fs-lg gap-10" title="print">Print <img class="w-50"
-                                    src="images/printer.png" alt="">
-                            </button>
+        <form action="{% url 'output_print' %}" method="post">
+            {% csrf_token %}
+            <main>
+                <section class="mian-content mt-4 countVote">
+                    <div class="container bg-transferaent">
+                        <div class="print-slip w-50 text-center">
+    
+                            <!-- Search -->
+                            <div class="title fs-xxl red-color search-title text-center">Print Qr Code</div>
+                                {{form.phone|as_crispy_field}}
+    
+    
+                            <!-- QR Code -->
+                            <!-- <div class="flex-center">
+                                <div class="qr-code  d-none mt-4" id="qrcode"></div>
+                            </div> -->
+    
+    
+                            <!-- print button -->
+                            <div class="mt-5 d-flex justify-end w-100 ">
+                                <button type="submit" href="{% url 'output_print' %}"
+                                    class="btn  print-btn white-color  fs-lg gap-10" title="print">Print <img class="w-50"
+                                        src="{% static 'images/printer.png' %}" alt="">
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
-        </main>
+                </section>
+            </main>
+        </form>
 
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
@@ -90,7 +91,6 @@
                 })
             }
             checkMemberF()
-
 
 
 

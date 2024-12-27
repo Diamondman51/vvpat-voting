@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Dashboard</title>
-        <link rel="stylesheet" href="./css/style.css">
-    </head>
-
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
     <body class="dashboard">
         <header class="container">
             <div>
@@ -35,17 +28,17 @@
                 <div class="cards mt-4">
                     <div class="grid-3 gap-30">
                         <div class="card orange-color fs-xxl title text-center border ">
-                            <img src="images/voters.png" alt="">
+                            <img src="{% static 'images/voters.png' %}" alt="">
                             <div class="fs-xxl">Total Voters</div>
-                            <p class=" fs-xxl value">290</p>
+                            <p class="fs-xxl value">290</p>
                         </div>
                         <div class="card orange-color fs-xxl title text-center border ">
-                            <img src="images/slip.png" alt="">
+                            <img src="{% static 'images/slip.png' %}" alt="">
                             <div class="fs-xxl">Slips Issued </div>
                             <p class=" fs-xxl value">200</p>
                         </div>
                         <div class="card orange-color fs-xxl title text-center border ">
-                            <img src="./images/yes.png" alt="">
+                            <img src="{% static './images/yes.png' %}" alt="">
                             <div class="">Casted Votes</div>
                             <p class="fs-xxl mt-1 value">182</p>
                         </div>
@@ -150,8 +143,8 @@
                 </div>
 
                 <div class="mt-50 result-btn">
-                    <button onclick="window.location.href='countVote.html'" class="btn  text-white fw-bold white-color">
-                        Generate Result</button>
+                    <button onclick="window.location.href='{% url 'code' %}'" class="btn  text-white fw-bold white-color">
+                        Enter code</button>
                 </div>
             </section>
         </main>
@@ -168,14 +161,5 @@
 
 
 
-        <script>
-
-
-
-            // booth selected
-
-
-        </script>
     </body>
-
-</html>
+{% endblock %}

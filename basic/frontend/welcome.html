@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Welcome</title>
-        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="{% static '/css/style.css' %}">
     </head>
 
     <body class="welcome">
@@ -28,7 +30,7 @@
             <section>
                 <div class="container">
                     <div class="img flex-center ">
-                        <img class="w-50 welcome-img" src="images/voting-concept-illustration_114360-5972.jpg" alt="">
+                        <img class="w-50 welcome-img" src="{% static 'images/voting-concept-illustration_114360-5972.jpg' %}" alt="">
                     </div>
                 </div>
             </section>
