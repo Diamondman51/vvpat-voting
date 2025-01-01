@@ -4,5 +4,6 @@ void greet() {
 }
 
 void main() {
+  greet();
   print("Hello world");
 }

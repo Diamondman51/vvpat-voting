@@ -347,134 +347,69 @@
     </div>
   </div>
 
-  <script src="{% static 'app.js' %}"></script>
-  <script>
-    // // default reload off
-    // window.addEventListener("beforeunload", function (event) {
-    //     event.preventDefault(); // Prevent the default action
-    //     return undefined;
-    // });
-
-    // document.addEventListener("keydown", function (event) {
-    //     if (event.key === "F5" || (event.ctrlKey && event.key === "r")) {
-    //         event.preventDefault();
-    //     }
-    // });
-
-    // document.addEventListener("contextmenu", function (event) {
-    //     event.preventDefault();
-    // });
-
-    // window.addEventListener("afterprint", () => {
-    //   window.location.href = "{% static './dashboard.html' %}";
-    // });
-
-    const secondConfirm = document.getElementById("second-confirm");
-    secondConfirm.addEventListener("click", function () {
-      // Close the modal
-      const modal = document.querySelector(".modal");
-      modal.classList.remove("active");
-      // Create a new print window with the current page content
-      const printWindow = window.open("", "_blank");
-      printWindow.document.write(document.documentElement.outerHTML);
-      printWindow.document.close();
-
-      // Trigger print in the new window and close it immediately after
-      printWindow.print();
-      printWindow.close();
-
-      // Redirect to the 'thanks.html' page
-      window.location.href = "{% url 'dashboard' %}";
-    });
-  </script>
-
-  <!-- JS for posting president and director data -->
-  <script>
-    document
-      .getElementById("second-confirm")
-      .addEventListener("click", function () {
-        // Collect selected president
-        const presidentTable = document.getElementById("president-canidate");
-        const selectedPresident = Array.from(
-          presidentTable.querySelectorAll("button.table-box")
-        )
-          .filter((button) => button.classList.contains("selected"))
-          .map((button) => {
-            const row = button.closest("tr");
-            return {
-              id: row.querySelector(".title").textContent.trim(),
-              name: row.querySelector(".name").textContent.trim(),
-              mem_num: row.querySelector(".post").textContent.trim(),
-            };
-          });
-
-        // Collect selected directors
-        const directorRows = document.querySelectorAll(".opojet");
-        const selectedDirectors = Array.from(directorRows).flatMap((row) => {
-          return Array.from(row.querySelectorAll("button.table-box"))
-            .filter((button) => button.classList.contains("selected"))
-            .map((button) => {
-              const directorRow = button.closest("div");
-              return {
-                id: directorRow.querySelector(".title").textContent.trim(),
-                name: directorRow.querySelector(".name").textContent.trim(),
-                mem_num: directorRow.querySelector(".post").textContent.trim(),
-              };
-            });
+  
+<script>
+  document
+    .getElementById("second-confirm")
+    .addEventListener("click", function () {
+      // Collect selected president
+      const presidentTable = document.getElementById("president-canidate");
+      const selectedPresident = Array.from(
+        presidentTable.querySelectorAll("button.table-box")
+      )
+        .filter((button) => button.classList.contains("selected"))
+        .map((button) => {
+          const row = button.closest("tr");
+          return {
+            // id: row.querySelector(".title").textContent.trim(),
+            name: row.querySelector(".name").textContent.trim(),
+            mem_num: row.querySelector(".post").textContent.trim(),
+          };
         });
 
-        // Prepare data for posting
-        const postData = {
-          president: selectedPresident[0] || null, // Assume only one president can be selected
-          directors: selectedDirectors,
-        };
-
-        // Post the data to the backend
-        fetch("{% url 'dashboard' %}", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-CSRFToken": "{{csrf_token}}", // Ensure CSRF token is included
-          },
-          body: JSON.stringify(postData),
-        })
-          .then((response) => {
-            if (response.ok) {
-              return response.json();
-            } else {
-              throw new Error("Failed to submit data");
-            }
-          })
-          .then((data) => {
-            console.log("Response:", data);
-            alert("Your vote has been successfully submitted!");
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-            alert("An error occurred while submitting your vote.");
+      // Collect selected directors
+      const directorRows = document.querySelectorAll(".opojet");
+      const selectedDirectors = Array.from(directorRows).flatMap((row) => {
+        return Array.from(row.querySelectorAll("button.table-box"))
+          .filter((button) => button.classList.contains("selected"))
+          .map((button) => {
+            const directorRow = button.closest("div");
+            return {
+              // id: directorRow.querySelector(".title").textContent.trim(),
+              name: directorRow.querySelector(".name").textContent.trim(),
+              mem_num: directorRow.querySelector(".post").textContent.trim(),
+            };
           });
       });
 
-    // Utility function to get CSRF token from cookies
-    function getCsrfToken() {
-      const name = "csrftoken";
-      const cookies = document.cookie.split(";");
-      for (let i = 0; i < cookies.length; i++) {
-        const cookie = cookies[i].trim();
-        if (cookie.startsWith(name + "=")) {
-          return cookie.substring(name.length + 1);
-        }
-      }
-      return "";
-    }
+      // Prepare data for posting
+      const postData = {
+        president: selectedPresident[0] || null, // Assume only one president can be selected
+        directors: selectedDirectors,
+      };
 
-    // Add event listeners to mark selected buttons
-    document.querySelectorAll("button.table-box").forEach((button) => {
-      button.addEventListener("click", function () {
-        button.classList.toggle("selected");
-      });
+      // Post the data to the backend
+      fetch("{% url 'apply_vote' uuid %}", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json", // Correct content type for JSON payload
+          "X-CSRFToken": "{{csrf_token}}", // Ensure CSRF token is included
+        },
+        body: JSON.stringify(postData),
+      })
+        
     });
-  </script>
+
+  // Add event listeners to mark selected buttons
+  document.querySelectorAll("button.table-box").forEach((button) => {
+    button.addEventListener("click", function () {
+      button.classList.toggle("selected");
+    });
+  });
+</script>
+
+
+
 </body>
 
 {% endblock %}

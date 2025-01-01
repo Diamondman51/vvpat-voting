@@ -20,9 +20,9 @@
     // });
 
     
-    window.addEventListener('afterprint', () => {
-        window.location.href = '{% static "./dashboard.html" %}';
-    });
+    // window.addEventListener('afterprint', () => {
+    //     window.location.href = '{% static "./dashboard.html" %}';
+    // });
 
     const secondConfirm = document.getElementById('second-confirm');
     secondConfirm.addEventListener('click', function () {
@@ -40,8 +40,8 @@
         printWindow.close();
 
 
-        // Redirect to the 'thanks.html' page
-        window.location.href = '{% url 'dashboard' %}';
+    //     // Redirect to the 'thanks.html' page
+        window.location.href = '{% url "dashboard" %}';
     });
 
 </script>

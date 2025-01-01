@@ -1,6 +1,8 @@
 # from django.shortcuts import render
 import datetime
+from hashlib import sha256
 import json
+from typing import Union
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views import View
@@ -48,7 +50,7 @@ class WelcomeView(View):
 
 
 class DashboardView(View):
-    def post(self, request) -> TemplateResponse:
+    def get(self, request) -> TemplateResponse:
         return TemplateResponse(request, "dashboard.html",)
 
 
@@ -59,7 +61,7 @@ class VoteView(View):
         presidents = President.objects.all()
         data = [directors[i:i+2] for i in range(0, len(directors), 2)]
         current_time = datetime.datetime.now().strftime("%d %B, %Y")
-        print('DATA', data)
+        # print('DATA', data)
         context = [
             {"counter": i, "directors": raw} for i, raw in enumerate(data, start=1)
         ]
@@ -69,8 +71,8 @@ class VoteView(View):
             'presidents': presidents,
             "uuid": uuid,
         }
-        print(context)
-        return TemplateResponse(request, "index copy.html", context)
+        # print(context)
+        return TemplateResponse(request, "index.html", context)
     
 
 class CountVoteView(View):
@@ -78,14 +80,26 @@ class CountVoteView(View):
         return TemplateResponse(request, "countVote.html",)
 
 
-class PostMeth(View):
-    def post(self, request, uuid) -> TemplateResponse:
-        print("--------------------------------------------------------")
-        data = json.loads(request.body)
-        print('Body: ', data)
-        president = data.get('president')
-        print('President: ', president)
-        directors: list = data.get("directors")
-        print('Directors: ', directors)
+class ApplyVoteView(View):
+    def post(self, request, uuid) -> Union[HttpResponse, TemplateResponse]:
+        user = User.objects.get(uuid=uuid)
+        voter = Voter.objects.get(user_id=user)
+        print(voter.is_voted)
+        if not voter.is_voted:
+            try:
+                data = json.loads(request.body)
+                print('Body: ', data)
+                president = data.get('president')
+                president = President.objects.get(membership_num=president.get('mem_num'))
+                voter.president_id = sha256(str(president.pk).encode("utf-8")).hexdigest()
+                directors: list = data.get("directors")
+                for director in directors:
+                    pass
+                    # voter.directors_id.append(sha256(str()))
+                print('President: ', president)
+                print('Directors: ', directors)
 
-        return HttpResponse('Success')
+                return TemplateResponse(request, 'dashboard.html')
+            except Exception as e:
+                print("Error Handled: ", e)
+                return HttpResponse("Error Handled: ", e)
