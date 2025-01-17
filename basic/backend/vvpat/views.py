@@ -56,7 +56,6 @@ class DashboardView(View):
 
 class VoteView(View):
     def get(self, request, uuid) -> TemplateResponse:
-
         directors = Director.objects.all()
         presidents = President.objects.all()
         data = [directors[i:i+2] for i in range(0, len(directors), 2)]
@@ -74,6 +73,9 @@ class VoteView(View):
         # print(context)
         return TemplateResponse(request, "index.html", context)
     
+    def post(self, request, uuid) -> TemplateResponse:
+        return TemplateResponse(request, "",)
+
 
 class CountVoteView(View):
     def get(self, request) -> TemplateResponse:
