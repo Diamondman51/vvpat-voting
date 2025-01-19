@@ -30,17 +30,17 @@
                         <div class="card orange-color fs-xxl title text-center border ">
                             <img src="{% static 'images/voters.png' %}" alt="">
                             <div class="fs-xxl">Total Voters</div>
-                            <p class="fs-xxl value">290</p>
+                            <p class="fs-xxl value">{{voters_count}}</p>
                         </div>
                         <div class="card orange-color fs-xxl title text-center border ">
                             <img src="{% static 'images/slip.png' %}" alt="">
                             <div class="fs-xxl">Slips Issued </div>
-                            <p class=" fs-xxl value">200</p>
+                            <p class=" fs-xxl value">{{slips}}</p>
                         </div>
                         <div class="card orange-color fs-xxl title text-center border ">
                             <img src="{% static './images/yes.png' %}" alt="">
                             <div class="">Casted Votes</div>
-                            <p class="fs-xxl mt-1 value">182</p>
+                            <p class="fs-xxl mt-1 value">{{voted}}</p>
                         </div>
                     </div>
                 </div>
@@ -60,82 +60,20 @@
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td>1.</td>
-                                    <td>2322</td>
-                                    <td>MD Tanvir Ahmed</td>
-                                    <td>
-                                        <img class="img"
-                                            src="https://easy-peasy.ai/cdn-cgi/image/quality=80,format=auto,width=700/https://fdczvxmwwjwpwbeeqcth.supabase.co/storage/v1/object/public/images/50dab922-5d48-4c6b-8725-7fd0755d9334/3a3f2d35-8167-4708-9ef0-bdaa980989f9.png">
-                                        </img>
-                                    </td>
-                                </tr>
 
+                                {% for voter in voted_voters %}
                                 <tr>
-                                    <td>2.</td>
-                                    <td>2322</td>
-                                    <td>MD Tanvir Ahmed</td>
+                                    <td>{{forloop.counter}}</td>
+                                    <td>{{voter.id}}</td>
+                                    <td>{{voter.first_name}} {{voter.last_name}}</td>
                                     <td>
                                         <img class="img"
-                                            src="https://img.freepik.com/free-photo/happy-young-businesswoman-sitting-office-desk-looking-away_23-2147943709.jpg?t=st=1729664860~exp=1729668460~hmac=db9224849ab63ca889ed76264099946a81981d539a7e2c033a76aeb2cfc3673f&w=1060">
+                                            src="{{voter.image.url}}">
                                         </img>
                                     </td>
                                 </tr>
-
-                                <tr>
-                                    <td>3.</td>
-                                    <td>1223</td>
-                                    <td> Tanvir Islam </td>
-                                    <td>
-                                        <img class="img"
-                                            src="https://as2.ftcdn.net/v2/jpg/05/23/01/87/1000_F_523018746_Kx3VbTAU8dGcN0jE9UPFx8K4VziuYEgU.jpg">
-                                        </img>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>4.</td>
-                                    <td>2322</td>
-                                    <td>Foysal Islam</td>
-                                    <td>
-                                        <img class="img"
-                                            src="https://img.freepik.com/free-photo/young-successful-businessman_144627-14764.jpg?t=st=1730375407~exp=1730379007~hmac=5738bc0a4c7b5612122cd32da5574d641b5451c57f003ccd18df785d5fa9c733&w=360">
-                                        </img>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>5.</td>
-                                    <td>44322</td>
-                                    <td>Habib Ahmed</td>
-                                    <td>
-                                        <img class="img"
-                                            src="https://img.freepik.com/free-photo/happy-young-businesswoman-sitting-office-desk-looking-away_23-2147943709.jpg?t=st=1729664860~exp=1729668460~hmac=db9224849ab63ca889ed76264099946a81981d539a7e2c033a76aeb2cfc3673f&w=100">
-                                        </img>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>6.</td>
-                                    <td>5432</td>
-                                    <td>Kobir Khan</td>
-                                    <td>
-                                        <img class="img"
-                                            src="https://img.freepik.com/free-photo/front-view-happy-lawyer-with-smartphone_23-2148230858.jpg?t=st=1729662311~exp=1729665911~hmac=327c585c405fdd354940072b7dd8f8092135f9bd426d5aa09cef08e6b2bce1e1&w=740">
-                                        </img>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>7.</td>
-                                    <td>5432</td>
-                                    <td>Kobir Khan</td>
-                                    <td>
-                                        <img class="img"
-                                            src="https://easy-peasy.ai/cdn-cgi/image/quality=80,format=auto,width=700/https://fdczvxmwwjwpwbeeqcth.supabase.co/storage/v1/object/public/images/50dab922-5d48-4c6b-8725-7fd0755d9334/3a3f2d35-8167-4708-9ef0-bdaa980989f9.png">
-                                        </img>
-                                    </td>
-                                </tr>
+                                {% endfor %}
+                               
 
                             </tbody>
                         </table>
@@ -143,7 +81,7 @@
                 </div>
 
                 <div class="mt-50 result-btn">
-                    <button onclick="window.location.href='{% url 'code' %}'" class="btn  text-white fw-bold white-color">
+                    <button onclick="window.location.href='{% url 'code_out' %}'" class="btn  text-white fw-bold white-color">
                         Enter code</button>
                 </div>
             </section>
@@ -159,7 +97,7 @@
             </div>
         </div>
 
-
-
+        
+        
     </body>
-{% endblock %}
+    {% endblock %}

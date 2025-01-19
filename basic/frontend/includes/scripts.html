@@ -1,6 +1,7 @@
 
 {% load static %}
 <script src="{% static 'app.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 
     // // default reload off
@@ -44,7 +45,7 @@
 
 
     //     // Redirect to the 'thanks.html' page
-        window.location.href = '{% url "dashboard" %}';
+        // window.location.href = '{% url "dashboard" %}';
     });
 
 
@@ -81,5 +82,9 @@
 
 
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 </html>
+{% load sweetify %}
+{% sweetify %}

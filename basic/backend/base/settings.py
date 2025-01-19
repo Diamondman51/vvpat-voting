@@ -40,7 +40,11 @@ INSTALLED_APPS = [
     'vvpat',
     "crispy_forms",
     "crispy_bootstrap5",
+    "sweetify"
 ]
+
+
+SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
@@ -71,6 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'vvpat.context_processor.total_voters'
             ],
         },
     },

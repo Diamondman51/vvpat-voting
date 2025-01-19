@@ -1,20 +1,20 @@
 # from django.shortcuts import render
 import datetime
+from email.policy import default
+from django.core.cache import cache
 from hashlib import sha256
-import json
 from typing import Union
-from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import redirect
 from django.views import View
 from django.template.response import TemplateResponse
-from django.contrib.auth import login
-import random
 from .forms import CustomTextWidgetForm
-
+import sweetify
 from .models import Director, President, Voter, User
 
 
 class CodeView(View):
+    cache.set('counter', 0, None)
     def get(self, request,) -> TemplateResponse:
         form = CustomTextWidgetForm()
         context = {
@@ -22,27 +22,48 @@ class CodeView(View):
         }
         return TemplateResponse(request, 'printQrcode.html', context)
 
-
-class PrintCodeView(View):
-    # def get(self, request) -> TemplateResponse:
-    #     qrcode = random.randint(1000000, 9999999)
-    #     context = {
-    #         'qrcode': qrcode,
-    #     }
-    #     return TemplateResponse(request, 'outputPrint.html', context)
-
-    def post(self, request, *args,) -> TemplateResponse:
+    def post(self, request) -> TemplateResponse:
         print('PrintCode post: ', request.POST)
-        qrcode = random.randint(1000000, 9999999)
         phone = request.POST.get("phone")
-        user = get_object_or_404(User, phone=phone)
-        uuid = user.uuid
-        voter = get_object_or_404(Voter, user_id=uuid)
-        print("Phone", voter)
-        context = {
-            'qrcode': uuid,
-        }
-        return TemplateResponse(request, "outputPrint.html", context)
+        try:
+            user = User.objects.get(phone=phone)
+            uuid = user.uuid
+            if user.is_employee:
+                voter = Voter.objects.get(user_id=uuid)
+
+                if not voter.is_registered:
+                    # form = CustomTextWidgetForm()
+                    # context = {
+                    #     'form': form,
+                    # }
+                    sweetify.warning(request, f'Dear {voter.first_name} {voter.last_name} you are not registered!!!', timer=3000)
+                    return TemplateResponse(request, 'dashboard.html')
+                elif voter.is_voted:
+                    sweetify.info(request, f'Dear {voter.first_name} {voter.last_name}, you have voted!!!', timer=3000)
+                    return redirect('dashboard')
+                BOOTHS = cache.get("BOOTHS")
+                booth = cache.get('counter') % BOOTHS
+
+                if not booth:
+                    booth = BOOTHS
+                context = {
+                    'booth': booth,
+                    'qrcode': str(uuid),
+                }
+                sweetify.success(request, 'Your operation was successful!', timer=1000)
+                cache.incr("counter", 1)                
+                return TemplateResponse(request, "outputPrint.html", context)
+
+
+            else:
+                sweetify.info(request, "You are not noted as Employee!!!")
+                return redirect("code_out")
+
+        except User.DoesNotExist or Voter.DoesNotExist:
+            sweetify.error(request, 'Can not find the Voter')
+            return redirect("code_out")
+
+
 
 class WelcomeView(View):
     def get(self, request) -> TemplateResponse:
@@ -51,14 +72,19 @@ class WelcomeView(View):
 
 class DashboardView(View):
     def get(self, request) -> TemplateResponse:
+
         return TemplateResponse(request, "dashboard.html",)
 
 
 class VoteView(View):
     def get(self, request, uuid) -> TemplateResponse:
+        # president_vote_form = PresidentVoteForm()
+        # director_formset = DirectorFormSet(queryset=Director.objects.all())
         directors = Director.objects.all()
         presidents = President.objects.all()
+        # data = [directors[i:i+2] for i in range(0, len(directors), 2)]
         data = [directors[i:i+2] for i in range(0, len(directors), 2)]
+        # data = [director_formset[i:i+2] for i in range(0, len(director_formset), 2)]
         current_time = datetime.datetime.now().strftime("%d %B, %Y")
         # print('DATA', data)
         context = [
@@ -68,13 +94,11 @@ class VoteView(View):
             'data': context,
             'time': current_time,
             'presidents': presidents,
+            # 'presidents': president_vote_form,
             "uuid": uuid,
         }
         # print(context)
         return TemplateResponse(request, "index.html", context)
-    
-    def post(self, request, uuid) -> TemplateResponse:
-        return TemplateResponse(request, "",)
 
 
 class CountVoteView(View):
@@ -84,24 +108,36 @@ class CountVoteView(View):
 
 class ApplyVoteView(View):
     def post(self, request, uuid) -> Union[HttpResponse, TemplateResponse]:
-        user = User.objects.get(uuid=uuid)
-        voter = Voter.objects.get(user_id=user)
-        print(voter.is_voted)
-        if not voter.is_voted:
-            try:
-                data = json.loads(request.body)
-                print('Body: ', data)
-                president = data.get('president')
-                president = President.objects.get(membership_num=president.get('mem_num'))
-                voter.president_id = sha256(str(president.pk).encode("utf-8")).hexdigest()
-                directors: list = data.get("directors")
-                for director in directors:
-                    pass
-                    # voter.directors_id.append(sha256(str()))
-                print('President: ', president)
-                print('Directors: ', directors)
+        try:
+            voter = Voter.objects.get(user_id=uuid)
+            if not voter.is_voted:
+                selected_president_id: str = request.POST.get('selected_president')
+                
+                selected_director_ids: list = request.POST.getlist('selected_directors')
+                voter.president_vote = sha256(selected_president_id.encode("utf-8")).hexdigest()
+                for director in selected_director_ids:
+                    voter.directors_vote.append(sha256(director.encode("utf-8")).hexdigest())
+                voter.is_voted = True
+                voter.save()
+                
+                print("Selected President ID:", selected_president_id)
+                print("Selected Director IDs:", selected_director_ids)
+                sweetify.success(request, f"Dear {voter.first_name} {voter.last_name} your vote has been counted", timer=3000)
+                return redirect('dashboard')
+            else:
+                sweetify.info(request, f"Dear {voter.first_name} {voter.last_name} you have voted, that is why your vote UNCOUNTED")
+                return redirect('dashboard')
+        except Exception as e:
+            print("Error handled: ", e)
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-                return TemplateResponse(request, 'dashboard.html')
-            except Exception as e:
-                print("Error Handled: ", e)
-                return HttpResponse("Error Handled: ", e)
+
+class SetQBooths(View):
+    def get(self, request,) -> TemplateResponse:
+        return TemplateResponse(request, 'booths.html')
+    
+    def post(self, request) -> TemplateResponse:
+        booth = request.POST.get("booth")
+        cache.set('BOOTHS', int(booth), 60*60*24)
+        
+        return redirect("code_out")

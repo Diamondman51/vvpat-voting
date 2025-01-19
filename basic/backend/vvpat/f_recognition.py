@@ -71,12 +71,14 @@ while True:
             # Giving random number
             voter: Voter = known_face_names[match_index][1]
             voter.refresh_from_db()
-            print(not voter.random_num or voter.random_num == 0)
-            if not voter.random_num or voter.random_num == 0:   
-                ch_num = choice(nums)
-                nums.remove(ch_num)
-                voter.random_num = ch_num
-                voter.save()
+            voter.is_registered = True
+            voter.save()
+            # print(not voter.random_num or voter.random_num == 0)
+            # if not voter.random_num or voter.random_num == 0:   
+            #     ch_num = choice(nums)
+            #     nums.remove(ch_num)
+            #     voter.random_num = ch_num
+            #     voter.save()
             # print(name)
         face_names.append(name)
 

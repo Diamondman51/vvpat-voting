@@ -45,10 +45,13 @@ class Voter(models.Model):
     last_name = models.CharField(max_length=50, null=True, blank=True)
     image = models.ImageField(blank=False, null=True)
     user_id = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True, to_field="uuid")
-    president_id = models.CharField(unique=True, null=True, blank=True, max_length=255)
-    directors_id = models.JSONField(null=True, blank=True, default=list)
-    random_num = models.IntegerField(default=0)
+    president_vote = models.CharField(unique=False, null=True, blank=True, max_length=255)
+    directors_vote = models.JSONField(null=True, blank=True, default=list)
+    # random_num = models.IntegerField(default=0)
+    # president_vote = models.ForeignKey('President', on_delete=models.SET_NULL, null=True, blank=True)  # Voter selects one president
+    # directors_vote = models.ManyToManyField('Director', blank=True)  # Voter selects multiple directors
     is_voted = models.BooleanField(default=False)
+    is_registered = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
@@ -77,7 +80,7 @@ class President(models.Model):
     first_name = models.CharField(max_length=50, null=True, blank=True)
     last_name = models.CharField(max_length=50, null=True, blank=True)
     image = models.ImageField(blank=False, null=True)
-    membership_num = models.CharField(null=True, blank=True, max_length=255)
+    membership_num = models.CharField(null=True, blank=True, unique=True, max_length=255)
 
     def __repr__(self):
         return f"{self.first_name} {self.last_name}"
@@ -85,4 +88,3 @@ class President(models.Model):
     def delete(self, *args, **kwargs):
         self.image.delete()
         return super().delete(*args, **kwargs)
-    

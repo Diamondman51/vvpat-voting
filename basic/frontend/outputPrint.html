@@ -36,7 +36,7 @@
 
                         <!-- show search result -->
                         <div class="show-search-result mt-4 output flex-center flex-column p-4 w-100  card ">
-                            <div class="sub-title booth">Booth 3</div>
+                            <div class="sub-title booth">Booth {{booth}}</div>
 
                             <!-- qr code -->
                             <div class="w-100 flex-center text-center">
@@ -61,7 +61,7 @@
 
             window.onload = function () {
                 const qrCodeContainer = document.getElementById('qrcode');
-                const voterId = "{{qrcode}}"; // Example ID for QR Code generation
+                const voterId = "http://127.0.0.1:8000/vvpat/vote/{{qrcode}}"; // Example ID for QR Code generation
                 qrCodeContainer.innerHTML = ""; // Clear any previous QR codes
                 new QRCode(qrCodeContainer, {
                     text: voterId,
@@ -77,6 +77,10 @@
 
 
         </script>
-    </body>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+</body>
 
 </html>
+{% load sweetify %}
+{% sweetify %}

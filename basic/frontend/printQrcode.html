@@ -1,65 +1,65 @@
 {% load static %}
 {% load crispy_forms_tags %}
-
 <!DOCTYPE html>
 <html lang="en">
-
+    
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Print Qr code</title>
         <link rel="stylesheet" href="{% static './css/style.css' %}">
     </head>
-
+    
     <body class="print-page">
         <header>
             <div class="container">
                 <div class="flex-between w-100 ">
+                    
                     <!-- Logo -->
                     <div class="w-25 logo-wrap">
                         <div class="logo flex-center fw-bolder title"><img
-                                src="https://www.zentleman.com/wp-content/uploads/2017/07/unnamed.png" alt=""></div>
-                    </div>
-
-                    <div class="center text-center w-50">
-                        <h1 class="uppercase red-color  fw-extrabold">gulshan club</h1>
-                        <div class="fs-xl medium-gray fw-bold">Election For the Year 2024-2025</div>
-                        <div class="">
-                            <div class="title red-color underline fs-xl fw-extrabold">Print QR Code</div>
+                            src="https://www.zentleman.com/wp-content/uploads/2017/07/unnamed.png" alt=""></div>
+                        </div>
+                        
+                        <div class="center text-center w-50">
+                            <h1 class="uppercase red-color  fw-extrabold">gulshan club</h1>
+                            <div class="fs-xl medium-gray fw-bold">Election For the Year 2024-2025</div>
+                            <div class="">
+                                <div class="title red-color underline fs-xl fw-extrabold">Print QR Code</div>
+                            </div>
+                        </div>
+                        
+                        <div class="right-blank  w-25">
+                            
                         </div>
                     </div>
-
-                    <div class="right-blank  w-25">
-
-                    </div>
                 </div>
-            </div>
-        </header>
-
-
-        <form action="{% url 'output_print' %}" method="post">
-            {% csrf_token %}
-            <main>
-                <section class="mian-content mt-4 countVote">
-                    <div class="container bg-transferaent">
-                        <div class="print-slip w-50 text-center">
-    
-                            <!-- Search -->
-                            <div class="title fs-xxl red-color search-title text-center">Print Qr Code</div>
+            </header>
+            
+            
+            <form action="{% url 'code_out' %}" method="post">
+                {% csrf_token %}
+                <main>
+                    <section class="mian-content mt-4 countVote">
+                        <div class="container bg-transferaent">
+                            <div class="print-slip w-50 text-center">
+                                
+                                <!-- Search -->
+                                <div class="title fs-xxl red-color search-title text-center">Print Qr Code</div>
                                 {{form.phone|as_crispy_field}}
-    
-    
-                            <!-- QR Code -->
-                            <!-- <div class="flex-center">
-                                <div class="qr-code  d-none mt-4" id="qrcode"></div>
-                            </div> -->
-    
-    
-                            <!-- print button -->
-                            <div class="mt-5 d-flex justify-end w-100 ">
-                                <button type="submit" href="{% url 'output_print' %}"
+                                
+                                
+                                <!-- QR Code -->
+                                <!-- <div class="flex-center">
+                                    <div class="qr-code  d-none mt-4" id="qrcode"></div>
+                                </div> -->
+                                
+                                
+                                <!-- print button -->
+                                <div class="mt-5 d-flex justify-end w-100 ">
+                                    <button type="submit"
                                     class="btn  print-btn white-color  fs-lg gap-10" title="print">Print <img class="w-50"
-                                        src="{% static 'images/printer.png' %}" alt="">
+                                    src="{% static 'images/printer.png' %}" alt="">
                                 </button>
                             </div>
                         </div>
@@ -67,68 +67,72 @@
                 </section>
             </main>
         </form>
-
-
+        
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
-            integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script>
-
+            
             function checkMemberF() {
                 const searchMemberInput = document.getElementById('search-member')
                 const searchMemberBtn = document.getElementById('search-member-btn')
                 const searchResult = document.querySelector('.show-search-result')
-
+                
                 searchMemberInput.addEventListener('input', function (e) {
                     const text = e.target.value;
-
+                    
 
                     document.querySelector('.error').classList.remove('active')
                 })
-
+                
                 searchMemberBtn.addEventListener('click', function () {
                     searchResult.classList.add('active')
                 })
             }
             checkMemberF()
-
-
-
-
-
+            
+            
+            
+            
+            
             // QR Code
             // const qrCode = document.getElementById('qrcode');
             // function generateQRCode(id) {
-            //     qrCode.innerHTML = "";
-
+                //     qrCode.innerHTML = "";
+                
             //     // Display QR code div
             //     qrCode.style.display = 'block';
-
+            
             //     new QRCode(qrCode, {
-            //         text: id
-            //     });
-            // }
+                //         text: id
+                //     });
+                // }
+                
+                
+                // document.getElementById("search-member-btn").addEventListener("click", function () {
+                    //     const inputField = document.getElementById("search-member");
+                    
+                    //     // Get the ID from the input field
+                    //     const memberId = inputField.value.trim();
+                    //     if (memberId) {
+                        //         generateQRCode(memberId);
+                        //     }
+                        // });
+                        
+                        // Print function
+                        function printSlipF(url, qrTag) {
+                            const printWindow = window.open(url, '_blank')
+                            
+                            printWindow.addEventListener('load', function () {
+                                printWindow.print()
+                            })
+                        }
+                        </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-
-            // document.getElementById("search-member-btn").addEventListener("click", function () {
-            //     const inputField = document.getElementById("search-member");
-
-            //     // Get the ID from the input field
-            //     const memberId = inputField.value.trim();
-            //     if (memberId) {
-            //         generateQRCode(memberId);
-            //     }
-            // });
-
-            // Print function
-            function printSlipF(url, qrTag) {
-                const printWindow = window.open(url, '_blank')
-
-                printWindow.addEventListener('load', function () {
-                    printWindow.print()
-                })
-            }
-        </script>
     </body>
-
-</html>
+    
+    </html>
+    {% load sweetify %}
+    {% sweetify %}

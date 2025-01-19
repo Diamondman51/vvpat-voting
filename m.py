@@ -1,8 +1,33 @@
-import webview
+# import random
 
-def start_app():
-    webview.create_window('Пример Pywebview', html='<h1>Привет, мир!</h1>')
-    webview
-    webview.start()
+# class M:
+#     mem = [[str(random.randint(0, 9)) for _ in range(10)] for _ in range(3)]
 
-start_app()
+#     def get(self):
+#         r = random.choice(self.mem)
+#         M.mem.remove(r)
+#         print(self.mem)
+#         return r
+
+# m_1 = M()
+# m_2 = M()
+# m_3 = M()
+# m_4 = M()
+
+# m_1.req = 2
+# print(m_1.req)
+# m_1.get()
+# m_2.get()
+# m_3.get()
+# m_4.get()
+
+
+class O():
+    c = 1
+    def o(self):
+        O.c += 1
+        print(self.c)
+
+for i in range(10):
+    o = O()
+    o.o()
