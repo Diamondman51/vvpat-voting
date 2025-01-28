@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-0wr$=^3ai2^c8xenb8f+g=168k$+=r+8*$3p1vi*8fgly$s=kj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'vvpat',
     "crispy_forms",
     "crispy_bootstrap5",
-    "sweetify"
+    "sweetify",
+    
 ]
 
 
@@ -148,3 +149,9 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.JSONParser',
     ],
 }
+
+
+# settings.py
+CELERY_BROKER_URL = 'redis://localhost:6379/0'  # Or another broker of your choice
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'

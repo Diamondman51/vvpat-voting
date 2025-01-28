@@ -1,6 +1,5 @@
 # from django.shortcuts import render
 import datetime
-from email.policy import default
 from django.core.cache import cache
 from hashlib import sha256
 from typing import Union
@@ -11,6 +10,7 @@ from django.template.response import TemplateResponse
 from .forms import CustomTextWidgetForm
 import sweetify
 from .models import Director, President, Voter, User
+from celery import shared_task
 
 
 class CodeView(View):
@@ -54,7 +54,6 @@ class CodeView(View):
                 cache.incr("counter", 1)                
                 return TemplateResponse(request, "outputPrint.html", context)
 
-
             else:
                 sweetify.info(request, "You are not noted as Employee!!!")
                 return redirect("code_out")
@@ -72,8 +71,15 @@ class WelcomeView(View):
 
 class DashboardView(View):
     def get(self, request) -> TemplateResponse:
-
-        return TemplateResponse(request, "dashboard.html",)
+        is_all_voted = False
+        voters = Voter.objects.all()
+        if voters.filter(is_voted=True).count() == voters.count():
+            is_all_voted = True
+        context = {
+            'is_all_voted': is_all_voted,
+            'timer': cache.get('timer'),
+        }
+        return TemplateResponse(request, "dashboard.html", context)
 
 
 class VoteView(View):
@@ -139,5 +145,11 @@ class SetQBooths(View):
     def post(self, request) -> TemplateResponse:
         booth = request.POST.get("booth")
         cache.set('BOOTHS', int(booth), 60*60*24)
+        cache.set('timer', True, 60*60*18)
         
+
         return redirect("code_out")
+    
+    @shared_task
+    def timer(self):
+        cache.set('timer', False, 60*60*18)
