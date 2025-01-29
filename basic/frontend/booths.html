@@ -12,10 +12,15 @@
     <div class="container">
     <form action="{% url 'set_booth' %}" method="post">
         {% csrf_token %}
-        <div class="input-group mb-3 d-flex align-items-center justify-center vh-100">
-            <input type="text" class="form-control" placeholder="Write the numbers of BOOTHS. Example: 5" name="booth" aria-label="Recipient's username" aria-describedby="button-addon2">
-            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Set</button>
+        <div class="d-flex flex-column mt-5">
+        {% if error %}
+        <p class="text-danger text-center">Please enter a number</p>
+        {% endif %}
+        <div class="d-flex gap-2 input-group">
+            <input type="number" class="form-control" name="booth" placeholder="Write the numbers of BOOTHS. Example: 5">
+            <button class="btn btn-primary">Set</button>
         </div>
+    </div>
     </form>
 
     </div>

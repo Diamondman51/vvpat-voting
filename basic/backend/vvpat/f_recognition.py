@@ -3,8 +3,7 @@ import sys
 import django
 import cv2
 import face_recognition
-from typing import Union
-from random import choice
+
 
 cv2.ocl.setUseOpenCL(True)
 

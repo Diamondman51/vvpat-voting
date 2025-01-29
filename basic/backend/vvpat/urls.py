@@ -10,4 +10,5 @@ urlpatterns = [
     path('vote/<str:uuid>', VoteView.as_view(), name="vote"),
     path('apply_vote/<str:uuid>', ApplyVoteView.as_view(), name="apply_vote"),
     path('set-the-quantity-of-booth/', SetQBooths.as_view(), name="set_booth"),
+    path('count_vote/', CountVoteView.as_view(), name="count_vote"),
 ]

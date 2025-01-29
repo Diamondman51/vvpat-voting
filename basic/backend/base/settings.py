@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     "sweetify",
-    
+    'django_celery_results'
 ]
 
 
@@ -152,6 +152,32 @@ REST_FRAMEWORK = {
 
 
 # settings.py
-CELERY_BROKER_URL = 'redis://localhost:6379/0'  # Or another broker of your choice
-CELERY_ACCEPT_CONTENT = ['json']
+CELERY_BROKER_URL = 'redis://localhost:6379'  # Or another broker of your choice
+CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Kolkata'
+
+CELERY_RESULT_BACKEND = "django-db"
+
+
+
+
+
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',  # Redis must be running
+    }
+}
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',  
+        # 'OPTIONS': {
+        #     'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        # }
+    }
+}

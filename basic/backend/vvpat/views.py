@@ -1,5 +1,6 @@
 # from django.shortcuts import render
 import datetime
+import celery
 from django.core.cache import cache
 from hashlib import sha256
 from typing import Union
@@ -7,6 +8,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect
 from django.views import View
 from django.template.response import TemplateResponse
+
+# from .tasks import set_timer
 from .forms import CustomTextWidgetForm
 import sweetify
 from .models import Director, President, Voter, User
@@ -79,6 +82,7 @@ class DashboardView(View):
             'is_all_voted': is_all_voted,
             'timer': cache.get('timer'),
         }
+        print(cache.get('timer'))
         return TemplateResponse(request, "dashboard.html", context)
 
 
@@ -144,12 +148,20 @@ class SetQBooths(View):
     
     def post(self, request) -> TemplateResponse:
         booth = request.POST.get("booth")
-        cache.set('BOOTHS', int(booth), 60*60*24)
-        cache.set('timer', True, 60*60*18)
-        
+        try:
+            cache.set('BOOTHS', int(booth), 60*60*24)
+            cache.set('timer', True, 60*60*18)
+            print("Cache after set", cache.get("timer"))
+            res = set_timer.apply_async(countdown=10)
+            return redirect("code_out")
+        except ValueError:
+            context = {
+                'error': 'Please enter a number'
+            }
+            return TemplateResponse(request, 'booths.html', context)
 
-        return redirect("code_out")
-    
-    @shared_task
-    def timer(self):
-        cache.set('timer', False, 60*60*18)
+
+@shared_task
+def set_timer():
+    print("Timer: ", cache.get('timer'))
+    cache.set('timer', False, 60*60*18)

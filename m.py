@@ -22,12 +22,12 @@
 # m_4.get()
 
 
-class O():
-    c = 1
-    def o(self):
-        O.c += 1
-        print(self.c)
 
-for i in range(10):
-    o = O()
-    o.o()
+import time
+
+
+for i in range(60000000):
+    # time.sleep(1)
+    # print(i, )
+    # time.sleep(1)
+    print(f"Hello {i}", end='\r')

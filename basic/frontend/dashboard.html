@@ -81,9 +81,15 @@
                 </div>
 
                 <div class="mt-50 result-btn">
+                    {% if timer and is_all_voted %}
                     <button onclick="window.location.href='{% url 'code_out' %}'" class="btn  text-white fw-bold white-color">
-                    {% if  %}    Enter code
+                        Enter code
                     </button>
+                    {% else %}
+                    <button onclick="window.location.href='{% url 'count_vote' %}'" class="btn  text-white fw-bold white-color">
+                        Count Vote
+                    </button>
+                    {% endif %}
                 </div>
             </section>
         </main>
