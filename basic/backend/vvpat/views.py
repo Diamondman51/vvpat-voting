@@ -113,8 +113,39 @@ class VoteView(View):
 
 class CountVoteView(View):
     def get(self, request) -> TemplateResponse:
-        return TemplateResponse(request, "countVote.html",)
+        voters = Voter.objects.filter(is_voted=True)
+        directors = list(map(self.add_count, Director.objects.all()))
+        presidents = list(map(self.add_count, President.objects.all()))
 
+        for voter in voters:
+            president_vote: str = voter.president_vote
+            directors_vote: list = voter.directors_vote
+
+            for president in presidents:
+                president_id_hash = sha256(str(president.pk).encode("utf-8")).hexdigest()
+                if president_id_hash == president_vote:
+                    president.count += 1
+            
+            for director in directors:
+                director_id_hash = sha256(str(director.pk).encode('utf-8')).hexdigest()
+                for vote in directors_vote:
+                    if director_id_hash == vote:
+                        director.count += 1
+        data1 = [directors[i] for i in range(0, len(directors), 2)]
+        data2 = [directors[i] for i in range(1, len(directors), 2)]
+
+        context = {
+            'presidents': presidents,
+            'data1': data1,
+            'data2': data2
+        }
+
+        print(presidents)
+        return TemplateResponse(request, "countVote.html", context)
+
+    def add_count(self, classs: Union[Director, President]):
+        classs.count = 0
+        return classs
 
 class ApplyVoteView(View):
     def post(self, request, uuid) -> Union[HttpResponse, TemplateResponse]:

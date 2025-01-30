@@ -26,8 +26,29 @@
 import time
 
 
-for i in range(60000000):
+for i in range(10):
     # time.sleep(1)
     # print(i, )
     # time.sleep(1)
     print(f"Hello {i}", end='\r')
+
+def d(x):
+    x.count = 2
+    return x
+
+class M:
+    l = 0
+
+m1 = M()
+m2 = M()
+m3 = M()
+
+
+
+p = list(map(d, [m1, m2, m3]))
+o = 0
+for c in p:
+    if o % 2 == 0:
+        c.count = 0
+    print(c.count)
+    o += 1   

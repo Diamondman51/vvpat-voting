@@ -83,37 +83,25 @@
                                             </tr>
                                         </thead>
 
-
+                                        {% for president in presidents %}
                                         <tbody id="present-table">
                                             <tr class="single-vote">
-                                                <td class="title fw-bolder fs-xxl">1</td>
+                                                <td class="title fw-bolder fs-xxl">{{forloop.counter}}</td>
                                                 <td class="text-center candidates-pic-wrap fit-content"><img
                                                         class="candidates-pic"
-                                                        src="https://img.freepik.com/premium-photo/male-worker-wearing-green-yellow-color-kit-isolated-white-background_1029679-144270.jpg?w=740"
+                                                        src="{{president.image.url}}"
                                                         alt=""></td>
                                                 <td>
-                                                    <div class="total-vote title">122</div>
+                                                    <div class="total-vote title">{{president.count}}</div>
                                                 </td>
                                                 <td class="text-center pl-4">
-                                                    <div class="title fw-bolder">Abdul Rahim</div>
-                                                    <div class="post">A/C # XYZ-1</div>
+                                                    <div class="title fw-bolder">{{president.first_name}} {{president.last_name}}</div>
+                                                    <div class="post">{{president.membership_num}}</div>
                                                 </td>
                                             </tr>
-                                            <tr class="single vote" id="first">
-                                                <td class="title fw-bolder fs-xxl">2</td>
-                                                <td class="text-center candidates-pic-wrap fit-content"><img
-                                                        class="candidates-pic"
-                                                        src="https://img.freepik.com/free-photo/front-view-happy-lawyer-with-smartphone_23-2148230858.jpg?t=st=1729662311~exp=1729665911~hmac=327c585c405fdd354940072b7dd8f8092135f9bd426d5aa09cef08e6b2bce1e1&w=740"
-                                                        alt=""></td>
-                                                <td>
-                                                    <div class="total-vote title">120</div>
-                                                </td>
-                                                <td class="text-center pl-4">
-                                                    <div class="title fw-bolder ">Abul Khan</div>
-                                                    <div class="post">A/C # XYZ-2</div>
-                                                </td>
-                                            </tr>
+                                            
                                         </tbody>
+                                        {% endfor %}
                                     </table>
                                 </div>
                             </div>
@@ -143,62 +131,24 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            
+                                            {% for director in data1 %}
                                             <tr class="single vote">
-                                                <td class="title fw-bolder fs-xxl">1</td>
+                                                <td class="title fw-bolder fs-xxl">{{forloop.counter}}</td>
                                                 <td class="text-center candidates-pic-wrap fit-content"><img
                                                         class="candidates-pic"
-                                                        src="https://img.freepik.com/premium-photo/male-worker-wearing-green-yellow-color-kit-isolated-white-background_1029679-144270.jpg?w=740"
+                                                        src="{{director.image.url}}"
                                                         alt=""></td>
                                                 <td>
-                                                    <div class="total-vote title">123</div>
+                                                    <div class="total-vote title">{{director.count}}</div> 
                                                 </td>
                                                 <td class="text-center pl-4">
-                                                    <div class="title fw-bolder  ">Abdul Rahim</div>
-                                                    <div class="post mt-1">A/C # XYZ-1</div>
+                                                    <div class="title fw-bolder  ">{{director.first_name}} {{director.last_name}}</div>
+                                                    <div class="post mt-1">{{director.membership_num}}</div>
                                                 </td>
                                             </tr>
-                                            <tr class="single vote">
-                                                <td class="title fw-bolder fs-xxl">2</td>
-                                                <td class="text-center candidates-pic-wrap fit-content"><img
-                                                        class="candidates-pic"
-                                                        src="https://img.freepik.com/free-photo/front-view-happy-lawyer-with-smartphone_23-2148230858.jpg?t=st=1729662311~exp=1729665911~hmac=327c585c405fdd354940072b7dd8f8092135f9bd426d5aa09cef08e6b2bce1e1&w=740"
-                                                        alt=""></td>
-                                                <td>
-                                                    <div class="total-vote title">152</div>
-                                                </td>
-                                                <td class="text-center pl-4">
-                                                    <div class="title fw-bolder ">Abul Khan</div>
-                                                    <div class="post mt-1">A/C # XYZ-2</div>
-                                                </td>
-                                            </tr>
-                                            <tr class="single vote">
-                                                <td class="title fw-bolder fs-xxl">3</td>
-                                                <td class="text-center candidates-pic-wrap fit-content"><img
-                                                        class="candidates-pic"
-                                                        src="https://img.freepik.com/free-photo/portrait-young-smiling-businesswoman-holding-smartphone-hand_23-2147943697.jpg?t=st=1729664766~exp=1729668366~hmac=818889e408bbc6e74dc6958e478965cea403270d24978367461ac6c542b82eb5&w=1060"
-                                                        alt=""></td>
-                                                <td>
-                                                    <div class="total-vote title">255</div>
-                                                </td>
-                                                <td class="text-center pl-4">
-                                                    <div class="title fw-bolder ">Cz Mary</div>
-                                                    <div class="post mt-1">A/C # XYZ-2</div>
-                                                </td>
-                                            </tr>
-                                            <tr class="single vote">
-                                                <td class="title fw-bolder fs-xxl">4</td>
-                                                <td class="text-center candidates-pic-wrap fit-content"><img
-                                                        class="candidates-pic"
-                                                        src="https://img.freepik.com/free-photo/happy-young-businesswoman-sitting-office-desk-looking-away_23-2147943709.jpg?t=st=1729664860~exp=1729668460~hmac=db9224849ab63ca889ed76264099946a81981d539a7e2c033a76aeb2cfc3673f&w=1060"
-                                                        alt=""></td>
-                                                <td>
-                                                    <div class="total-vote title">14</div>
-                                                </td>
-                                                <td class="text-center pl-4">
-                                                    <div class="title fw-bolder ">Jarry MS</div>
-                                                    <div class="post mt-1">A/C # XYZ-2</div>
-                                                </td>
-                                            </tr>
+                                            {% endfor %}
+                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -215,62 +165,23 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            {% for director in data2 %}
                                             <tr class="single vote">
-                                                <td class="title fw-bolder fs-xxl">1</td>
+                                                <td class="title fw-bolder fs-xxl">{{forloop.counter}}</td>
                                                 <td class="text-center candidates-pic-wrap fit-content"><img
                                                         class="candidates-pic"
-                                                        src="https://as2.ftcdn.net/v2/jpg/05/23/01/87/1000_F_523018746_Kx3VbTAU8dGcN0jE9UPFx8K4VziuYEgU.jpg"
+                                                        src="{{director.image.url}}"
                                                         alt=""></td>
                                                 <td>
-                                                    <div class="total-vote title">20</div>
+                                                    <div class="total-vote title">{{director.count}}</div>
                                                 </td>
                                                 <td class="text-center pl-4">
-                                                    <div class="title fw-bolder  ">Micle Jo</div>
-                                                    <div class="post mt-1">A/C # XYZ-1</div>
+                                                    <div class="title fw-bolder  ">{{director.first_name}} {{director.last_name}}</div>
+                                                    <div class="post mt-1">{{director.membership_num}}</div>
                                                 </td>
                                             </tr>
-                                            <tr class="single vote">
-                                                <td class="title fw-bolder fs-xxl">2</td>
-                                                <td class="text-center candidates-pic-wrap fit-content"><img
-                                                        class="candidates-pic"
-                                                        src="https://img.freepik.com/premium-photo/professional-photo-linkedin-profile-picture-beautiful-looking-woman-light-color_1078199-10524.jpg?w=740"
-                                                        alt=""></td>
-                                                <td>
-                                                    <div class="total-vote title">22</div>
-                                                </td>
-                                                <td class="text-center pl-4">
-                                                    <div class="title fw-bolder ">Abul Khan</div>
-                                                    <div class="post mt-1">A/C # XYZ-2</div>
-                                                </td>
-                                            </tr>
-                                            <tr class="single vote">
-                                                <td class="title fw-bolder fs-xxl">3</td>
-                                                <td class="text-center candidates-pic-wrap fit-content"><img
-                                                        class="candidates-pic"
-                                                        src="https://img.freepik.com/free-photo/front-view-happy-lawyer-with-smartphone_23-2148230858.jpg?t=st=1729662311~exp=1729665911~hmac=327c585c405fdd354940072b7dd8f8092135f9bd426d5aa09cef08e6b2bce1e1&w=740"
-                                                        alt=""></td>
-                                                <td>
-                                                    <div class="total-vote title">35</div>
-                                                </td>
-                                                <td class="text-center pl-4">
-                                                    <div class="title fw-bolder ">Abul Khan</div>
-                                                    <div class="post mt-1">A/C # XYZ-2</div>
-                                                </td>
-                                            </tr>
-                                            <tr class="single vote">
-                                                <td class="title fw-bolder fs-xxl">4</td>
-                                                <td class="text-center candidates-pic-wrap fit-content"><img
-                                                        class="candidates-pic"
-                                                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                                        alt=""></td>
-                                                <td>
-                                                    <div class="total-vote title">10</div>
-                                                </td>
-                                                <td class="text-center pl-4">
-                                                    <div class="title fw-bolder ">Abul Khan</div>
-                                                    <div class="post mt-1">A/C # XYZ-2</div>
-                                                </td>
-                                            </tr>
+                                            {% endfor %}
+                                            
                                         </tbody>
                                     </table>
                                 </div>

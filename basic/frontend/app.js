@@ -121,20 +121,24 @@ function counter() {
 }
 
 // change vote and sort rows by votes immediately after
-function changeVotesAndSort() {
-  const voteElements = document.querySelectorAll(".total-vote");
 
-  voteElements.forEach((el, index) => {
-    setTimeout(() => {
-      const currentVotes = parseInt(el.innerText, 10);
-      const newVote = currentVotes + Math.floor(Math.random() * 3) + 1;
-      el.innerText = newVote;
 
-      // Sort table after each vote update
-      sortTableByVotes("present-table");
-    }, index * 2000);
-  });
-}
+// function changeVotesAndSort() {
+//   const voteElements = document.querySelectorAll(".total-vote");
+
+//   voteElements.forEach((el, index) => {
+//     setTimeout(() => {
+//       const currentVotes = parseInt(el.innerText, 10);
+//       const newVote = currentVotes + Math.floor(Math.random() * 3) + 1;
+//       el.innerText = newVote;
+
+//       // Sort table after each vote update
+//       sortTableByVotes("present-table");
+//     }, index * 2000);
+//   });
+// }
+
+
 
 // Sort function to reorder rows based on votes
 function sortTableByVotes(element) {
