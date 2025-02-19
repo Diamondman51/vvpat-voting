@@ -90,6 +90,9 @@ class VoteView(View):
     def get(self, request, uuid) -> TemplateResponse:
         # president_vote_form = PresidentVoteForm()
         # director_formset = DirectorFormSet(queryset=Director.objects.all())
+        user = User.objects.get(uuid=uuid)
+        if user.voter.is_voted:
+            return redirect('dashboard')
         directors = Director.objects.all()
         presidents = President.objects.all()
         # data = [directors[i:i+2] for i in range(0, len(directors), 2)]
@@ -154,7 +157,7 @@ class ApplyVoteView(View):
             if not voter.is_voted:
                 selected_president_id: str = request.POST.get('selected_president')
                 
-                selected_director_ids: list = request.POST.getlist('selected_directors')
+                selected_director_ids: list = request.POST.getlist('selected_director')
                 voter.president_vote = sha256(selected_president_id.encode("utf-8")).hexdigest()
                 for director in selected_director_ids:
                     voter.directors_vote.append(sha256(director.encode("utf-8")).hexdigest())
@@ -183,7 +186,7 @@ class SetQBooths(View):
             cache.set('BOOTHS', int(booth), 60*60*24)
             cache.set('timer', True, 60*60*18)
             print("Cache after set", cache.get("timer"))
-            res = set_timer.apply_async(countdown=10)
+            set_timer.apply_async(countdown=60*60*18)
             return redirect("code_out")
         except ValueError:
             context = {
@@ -196,3 +199,49 @@ class SetQBooths(View):
 def set_timer():
     print("Timer: ", cache.get('timer'))
     cache.set('timer', False, 60*60*18)
+
+
+class OMRCountVote(View):
+    def get(self, request) -> TemplateResponse:
+        presidents = list(map(self.add_count, President.objects.all()))
+        directors = list(map(self.add_count, Director.objects.all()))
+
+        data1 = [directors[i] for i in range(0, len(directors), 2)]
+        data2 = [directors[i] for i in range(1, len(directors), 2)]
+
+        context = {
+            'presidents': presidents,
+            'data1': data1,
+            'data2': data2
+        }
+        
+        return TemplateResponse(request, 'countVote.html', context)
+
+    def add_count(self, classs: Union[Director, President]):
+        classs.count = len(classs.omr_votes)
+        return classs
+
+
+class ResetView(View):
+    def get(self, request):
+        if request.user.is_superuser:
+            voters = Voter.objects.all()
+            directors = Director.objects.all()
+            presidents = President.objects.all()
+            for voter in voters:
+                voter.is_voted = False
+                voter.directors_vote.clear()
+                voter.president_vote = None
+                voter.save()
+            for director in directors:
+                director.omr_votes.clear()
+                director.save()
+            for president in presidents:
+                president.omr_votes.clear()
+                president.save()
+            sweetify.success(request, "All votes have been reset", timer=3000)
+            return redirect('dashboard')
+        else:
+            sweetify.error(request, "You do not have permission to perform this action", timer=3000)
+            return redirect('dashboard')
+

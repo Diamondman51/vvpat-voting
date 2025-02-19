@@ -4,103 +4,92 @@ import django
 import cv2
 import face_recognition
 
-
-cv2.ocl.setUseOpenCL(True)
-
 # Setup Django environment
 sys.path.append(r'E:/vvpat-voting/basic/backend')  # Add your Django project directory to the Python path
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "base.settings")  # Use the correct settings module
 django.setup()
 
-from vvpat.models import Director, Voter
+from vvpat.models import Voter
 
-print("Loading known faces from the database...")
+def load_known_faces():
+    """Load known faces from the database and encode them."""
+    print("Loading known faces from the database...")
+    voters = Voter.objects.all()
+    known_face_encodings = []
+    known_face_names = []
 
-# Load known face(s) and encode them
-images = [[voter.user_id.first_name, voter.image.path, voter] for voter in Voter.objects.all()]
+    for voter in voters:
+        try:
+            known_image = face_recognition.load_image_file(voter.image.path)
+            known_encoding = face_recognition.face_encodings(known_image)[0]
+            known_face_encodings.append(known_encoding)
+            known_face_names.append([voter.user_id.first_name, voter])
+        except Exception as e:
+            print(f"Error processing image for {voter.user_id.first_name}: {e}")
 
-known_face_encodings = []
-known_face_names = []
+    return known_face_encodings, known_face_names
 
-print(images)
-for image in images:
-    print(image[0])
-
-for image in images:
-    known_image = face_recognition.load_image_file(image[1])  # Replace with your known image
-    known_encoding = face_recognition.face_encodings(known_image)[0]  # Get the first face encoding
-
-    # Known faces and their names
-    known_face_encodings.append(known_encoding)
-    known_face_names.append([image[0], image[2]])  # Replace with the name of the known person
-
-# Initialize the video capture
-video_capture = cv2.VideoCapture(0)  # 0 for the default webcam
-
-print("Starting real-time face recognition... Press 'q' to quit.")
-
-nums = [i for i in range(1000000, 9999999)]
-
-while True:
-    # Capture a single frame from the webcam
-    ret, frame = video_capture.read()
-    if not ret:
-        print("Failed to grab frame. Exiting...")
-        break
-
-    # Convert the frame from BGR (OpenCV) to RGB (face_recognition uses RGB)
+def process_frame(frame, known_face_encodings, known_face_names):
+    """Process a single frame for face recognition."""
     rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-
-    # Find all face locations and encodings in the current frame
     face_locations = face_recognition.face_locations(rgb_frame)
     face_encodings = face_recognition.face_encodings(rgb_frame, face_locations)
-
-    # List for storing names of detected faces
     face_names = []
 
     for face_encoding in face_encodings:
-        # Compare the current face with the known faces
         matches = face_recognition.compare_faces(known_face_encodings, face_encoding)
-        name = "Unknown"  # Default to "Unknown"
+        name = "Unknown"
 
         if True in matches:
-            # Find the index of the first match
             match_index = matches.index(True)
             name = known_face_names[match_index][0]
-            # Giving random number
             voter: Voter = known_face_names[match_index][1]
             voter.refresh_from_db()
             voter.is_registered = True
             voter.save()
-            # print(not voter.random_num or voter.random_num == 0)
-            # if not voter.random_num or voter.random_num == 0:   
-            #     ch_num = choice(nums)
-            #     nums.remove(ch_num)
-            #     voter.random_num = ch_num
-            #     voter.save()
-            # print(name)
+
         face_names.append(name)
 
-    # Draw rectangles and labels around the detected faces
-    for (top, right, bottom, left), name in zip(face_locations, face_names):
-        # Draw a rectangle around the face
-        cv2.rectangle(frame, (left, top), (right, bottom), (0, 255, 0), 2)
+    return face_locations, face_names
 
-        # Draw a label with the name below the rectangle
+def draw_face_annotations(frame, face_locations, face_names):
+    """Draw rectangles and labels around detected faces."""
+    for (top, right, bottom, left), name in zip(face_locations, face_names):
+        cv2.rectangle(frame, (left, top), (right, bottom), (0, 255, 0), 2)
         cv2.rectangle(frame, (left, bottom - 25), (right, bottom), (255, 255, 0), cv2.FILLED)
         font = cv2.FONT_HERSHEY_DUPLEX
         cv2.putText(frame, name, (left + 6, bottom - 6), font, 0.5, (255, 255, 255), 1)
 
-    # Display the resulting frame
-    cv2.imshow("Video", frame)
+def main():
+    cv2.ocl.setUseOpenCL(True)
+    known_face_encodings, known_face_names = load_known_faces()
 
-    # Press 'q' to quit
-    if cv2.waitKey(1) & 0xFF == ord("q"):
-        break
+    video_capture = cv2.VideoCapture(0)  # 0 for the default webcam
+    if not video_capture.isOpened():
+        print("Error: Could not open video capture.")
+        return
 
-# Release the webcam and close the window
-video_capture.release()
-cv2.destroyAllWindows()
+    print("Starting real-time face recognition... Press 'q' to quit.")
+
+    while True:
+        ret, frame = video_capture.read()
+        if not ret:
+            print("Failed to grab frame. Exiting...")
+            break
+
+        face_locations, face_names = process_frame(frame, known_face_encodings, known_face_names)
+        draw_face_annotations(frame, face_locations, face_names)
+
+        cv2.imshow("Recognition", frame)
+
+        if cv2.waitKey(1) & 0xFF == ord("q"):
+            break
+
+    video_capture.release()
+    cv2.destroyAllWindows()
+
+if __name__ == "__main__":
+    main()
 
 
 

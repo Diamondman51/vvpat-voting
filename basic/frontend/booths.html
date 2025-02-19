@@ -9,16 +9,12 @@
     <title>Set Booth</title>
 </head>
 <body>
-    <div class="container">
+    <div>
     <form action="{% url 'set_booth' %}" method="post">
         {% csrf_token %}
-        <div class="d-flex flex-column mt-5">
-        {% if error %}
-        <p class="text-danger text-center">Please enter a number</p>
-        {% endif %}
-        <div class="d-flex gap-2 input-group">
-            <input type="number" class="form-control" name="booth" placeholder="Write the numbers of BOOTHS. Example: 5">
-            <button class="btn btn-primary">Set</button>
+        <div class="my_input" style="display: flex; justify-content: space-between; align-items: center; margin: 20% 10% 20% 10%;">
+            <input type="number" class="form-control" name="booth" placeholder="Write the numbers of BOOTHS. Example: 5" style="width: 69%;">
+            <button class="btn btn-primary" style="width: 30%; height: 10%;">Set</button>
         </div>
     </div>
     </form>

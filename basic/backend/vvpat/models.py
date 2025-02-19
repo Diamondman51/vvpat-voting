@@ -10,7 +10,6 @@ class User(AbstractUser):
     uuid = models.UUIDField(primary_key=True, unique=True, default=uuid4)
     first_name = models.CharField(max_length=50, null=True, blank=True)
     last_name = models.CharField(max_length=50, null=True, blank=True)
-    # username = models.CharField(max_length=255, null=True, blank=True)
     phone = models.CharField(max_length=15, unique=True, help_text="+998950701662")
     email = models.EmailField(max_length=100, unique=True, null=True, blank=True)
     image = models.ImageField(upload_to='user_images')
@@ -66,6 +65,7 @@ class Director(models.Model):
     last_name = models.CharField(max_length=50, null=True, blank=True)
     image = models.ImageField(blank=False, null=True)
     membership_num = models.CharField(max_length=255, null=True, blank=True)
+    omr_votes = models.JSONField(null=True, blank=True, default=list)
     # side = models.IntegerField(max_length=10, choices=((0, 'Left'), (1, 'Right')), null=True, blank=False)
 
     def __repr__(self):
@@ -81,6 +81,7 @@ class President(models.Model):
     last_name = models.CharField(max_length=50, null=True, blank=True)
     image = models.ImageField(blank=False, null=True)
     membership_num = models.CharField(null=True, blank=True, unique=True, max_length=255)
+    omr_votes = models.JSONField(null=True, blank=True, default=list)
 
     def __repr__(self):
         return f"{self.first_name} {self.last_name}"
