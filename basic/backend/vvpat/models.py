@@ -42,7 +42,7 @@ class Voter(models.Model):
     # position = models.ForeignKey('Position', on_delete=models.CASCADE)
     first_name = models.CharField(max_length=50, null=True, blank=True)
     last_name = models.CharField(max_length=50, null=True, blank=True)
-    image = models.ImageField(blank=False, null=True)
+    image = models.ImageField(blank=False, null=True, blank=True)
     user_id = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True, to_field="uuid")
     president_vote = models.CharField(unique=False, null=True, blank=True, max_length=255)
     directors_vote = models.JSONField(null=True, blank=True, default=list)
@@ -63,7 +63,7 @@ class Voter(models.Model):
 class Director(models.Model):
     first_name = models.CharField(max_length=50, null=True, blank=True)
     last_name = models.CharField(max_length=50, null=True, blank=True)
-    image = models.ImageField(blank=False, null=True)
+    image = models.ImageField(blank=False, null=True, blank=True)
     membership_num = models.CharField(max_length=255, null=True, blank=True)
     omr_votes = models.JSONField(null=True, blank=True, default=list)
     # side = models.IntegerField(max_length=10, choices=((0, 'Left'), (1, 'Right')), null=True, blank=False)
