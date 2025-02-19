@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Print Slip output</title>
+        <link rel="stylesheet" href="{% static './css/style.css' %}">
+    </head>
+
+    <body class="print-output-page">
+        <header>
+            <div class="container">
+                <div class="flex-column align-center w-100 ">
+                    <!-- Logo -->
+                    <div class="w-25 flex-center">
+                        <div class="logo flex-center fw-bolder title"><img
+                                src="https://www.zentleman.com/wp-content/uploads/2017/07/unnamed.png" alt=""></div>
+                    </div>
+                    <div class="center text-center w-100">
+                        <h1 class="uppercase red-color  fw-extrabold">gulshan club</h1>
+                        <div class="fs-xl medium-gray fw-bold">Election For the Year 2024-2025</div>
+                        <div class="d-none">
+                            <div class="title red-color underline fs-xl fw-extrabold">Voter Slip</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mian-content  countVote">
+                <div class="container bg-transferaent">
+                    <div class="print-slip w-100 text-center">
+
+                        <!-- show search result -->
+                        <div class="show-search-result mt-4 output flex-center flex-column p-4 w-100  card ">
+                            <div class="sub-title booth">Booth {{booth}}</div>
+
+                            <!-- qr code -->
+                            <div class="w-100 flex-center text-center">
+                                <div id="qrcode" class="print-qrcode w-100 mt-4">
+                                </div>
+                            </div>
+                            <a class="btn white-color" href="{% url 'vote' qrcode %}">Vote</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+        <!-- Include QR Code library -->
+
+        <script>
+            window.addEventListener('afterprint', () => {
+                window.location.href = './dashboard.html';
+            });
+
+
+            window.onload = function () {
+                const qrCodeContainer = document.getElementById('qrcode');
+                const voterId = "http://127.0.0.1:8000/vvpat/vote/{{qrcode}}"; // Example ID for QR Code generation
+                qrCodeContainer.innerHTML = ""; // Clear any previous QR codes
+                new QRCode(qrCodeContainer, {
+                    text: voterId,
+                    width: 128,
+                    height: 128
+                })
+                
+            };
+
+            // Redirect after printing
+            window.addEventListener('afterprint', () => {
+                window.location.href = './dashboard.html';
+            });
+
+
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+</body>
+
+</html>
+{% load sweetify %}
+{% sweetify %}

@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Welcome</title>
+        <link rel="stylesheet" href='{% static "./css/style.css" %}'>
+    </head>
+
+    <body class="welcome">
+        <header class="container">
+            <!-- Logo -->
+            <div class="w-100 flex-center">
+                <div class="logo flex-center fw-bolder title"><img
+                        src="https://www.zentleman.com/wp-content/uploads/2017/07/unnamed.png" alt="">
+                </div>
+            </div>
+
+            <div class="center text-center ">
+                <h1 class="uppercase red-color welcome-text fw-extrabold">Welcome To gulshan Club</h1>
+                <div class="title fw-bold dark mt-1">Election For the Year 2024-2025</div>
+            </div>
+        </header>
+
+
+        <main>
+            <section>
+                <div class="container">
+                    <div class="img flex-center ">
+                        <img class="w-50 welcome-img" src='{% static "images/voting-concept-illustration_114360-5972.jpg" %}' alt="">
+                    </div>
+                </div>
+            </section>
+        </main>
+    </body>
+
+</html>

@@ -1,0 +1,437 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <body>
+        <header>
+            <div class="container">
+                <div class="flex-between w-100 ">
+                    <!-- Logo -->
+                    <div class="w-25 ">
+                        <div class="logo flex-center fw-bolder title"><img
+                                src="https://www.zentleman.com/wp-content/uploads/2017/07/unnamed.png" alt=""></div>
+                    </div>
+                    <div class="center text-center w-50">
+                        <h1 class="uppercase red-color  fw-extrabold">gulshan club</h1>
+                        <div class="title fw-bold dark">Election For the Year 2024-2025</div>
+                        <div class="mt-2">
+                            <div class="title red-color underline fs-xl fw-extrabold">Ballot Paper</div>
+                            <div class="mt-1">Election Date: 20 December, 2025</div>
+                        </div>
+                    </div>
+                    <div class="right-blank  w-25">
+
+                    </div>
+                </div>
+
+                <!-- Voter Form -->
+                <div class="voter-form mt-2">
+                    <div class="flex-between">
+                        <div class="flex-start input-item gap-5">
+                            <div class="sub-title text-nowrap " for="serial-no">Serial No.</div>
+                            <div class="border-dot">298</div>
+                        </div>
+                        <div class="flex-column  input-item img gap-5">
+                            <div class="border-dot">
+                                <img src='{% static "images/signature.png" %}' alt="">
+                            </div>
+                            <div class="sub-title d-block text-center pl-1 text-nowrap " for="serial-no">
+                                Authorized Signature
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <form action="{% url 'apply_vote' uuid %}" method="post">
+        <main>
+            <section class="mian-content mt-4 ">
+                <div class="container">
+                    <div class="main-content-area">
+                        <!-- top boxs -->
+                        <div class="top-boxs flex-between">
+                            <div class="box"></div>
+                            <div class="box"></div>
+                        </div>
+
+                        <!-- head -->
+                        <div class="head text-center flex-between">
+                            <div class="w-25">
+                            </div>
+
+                            <div class="text-center head-middle w-50">
+                                <div class=" title">Election For the Year 2024-2025</div>
+                                <div class="title red-color underline fs-xl fw-extrabold">Ballot Paper</div>
+
+                                <!-- sticker -->
+                                <div class="sticker">
+                                    <div class="sub-title fs-xl">Hologram Sticker</div>
+                                </div>
+                            </div>
+                            <div class="w-25 d-flex justify-end">
+                                <!-- Logo -->
+                                <div class="logo  flex-center fw-bolder title"><img
+                                        src="https://www.zentleman.com/wp-content/uploads/2017/07/unnamed.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- =========  President  =========-->
+                            {% csrf_token %}
+
+                            <!-- President input  -->
+                            <input type="hidden" name="selected_president" id="selected-president">
+
+                            
+                            <!-- Directors input -->
+                            <div id="selected-directors-container">
+                                <!-- Hidden inputs for directors will be dynamically added here -->
+                            </div>
+
+
+                            <div class="president ">
+                                <div class="flex-center  w-100">
+                                    <div
+                                        class="present uppercase fs-xl fw-bold radius-md px-4 py-1 bg-red  white-color  fit-content">
+                                        president
+                                    </div>
+                                </div>
+    
+                                <!-- instruction -->
+                                <div class="instruction mt-3">
+                                    <div class="sub-title fw-bolder fs-lg uppercase">Instruction:</div>
+                                    <ol class="mt-2  flex-column gap-5 fw-bold ">
+                                        <li>A Member shall cast <strong class="red-color fs-md">ONLY 1 (ONE)</strong> Vote
+                                            for
+                                            President.
+                                        </li>
+                                        <li>A Member shall vote by putting cross <strong
+                                                class="red-color fs-md">(X)</strong> mark
+                                            in the box shown before every
+                                            name.
+                                        </li>
+                                        <li>Casting of more than one vote or putting any mark other than cross
+                                            <strong class="red-color fs-md">(X)</strong> mark will
+                                            invalidate the ballot paper for the
+                                            vote of President.
+                                        </li>
+                                    </ol>
+                                </div>
+    
+                                <!-- Ballot box  -->
+                                <div class="ballot-box mt-4 flex-center  w-100">
+                                    <div class="table-wrap">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-wrap">Ballot No.</th>
+                                                    <th>Photo</th>
+                                                    <th class=""><img class="w-50 text-center" src='{% static "images/check.png" %}'
+                                                            alt="">
+                                                    </th>
+                                                    <th class="name-of">Name of the Candidates <br> with Membership Number
+                                                    </th>
+                                                </tr>
+                                            </thead>
+    
+    
+                                            <tbody id="president-canidate">
+                                                {% for president in presidents %}
+
+                                                <tr class="single-vote">
+                                                    <td class="title fw-bolder fs-xxl">{{forloop.counter}}</td>
+                                                    <td class="text-center candidates-pic-wrap fit-content"><img
+                                                            class="candidates-pic"
+                                                            src={{president.image.url}}
+                                                            alt="">
+                                                    </td>
+                                                    <td>
+                                                        <button type="button" data-value="{{president.id}}" class="table-box flex-center president-button" title="vote">
+                                                            <img class="w-75" src='{% static "images/vote (1).png" %}' alt="">
+                                                        </button>
+                                                    </td>
+                                                    <td class="text-center pl-4">
+                                                        <div class="title fw-bolder">{{president.first_name}} {{president.last_name}}</div>
+                                                        <div class="post mt-1">{{president.membership_num}}</div>
+                                                    </td>
+                                                </tr>
+                                      
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <!-- =========  Board of members  =========-->
+                            <div class="board-of-member mt-6">
+                                <div class="flex-center w-100">
+                                    <div
+                                        class="present uppercase fs-xl fw-bold radius-md px-4 py-1 bg-red  white-color  fit-content">
+                                        BOARD OF DIRECTORS
+                                    </div>
+                                </div>
+    
+                                <!-- instruction -->
+                                <div class="instruction mt-3">
+                                    <div class="sub-title fw-bolder fs-lg uppercase">Instruction:</div>
+                                    <ol class="mt-2  flex-column gap-5 fw-bold ">
+                                        <li> A Member shall cast <strong class="fs-md red-color">10 (TEN)</strong> Votes
+                                            for Board of Directors.
+                                        </li>
+                                        <li>A member shall vote by putting cross <strong class="red-color fs-md">X </strong>
+                                            make in the box shown before every name of, <strong class="red-color fs-md"> ANY
+                                                TEN </strong>
+                                            Candidates as
+                                            he/she
+                                            desires
+                                        </li>
+                                        <li>Casting of more or less than TEN votes or putting any mark other than cross
+                                            <strong class="red-color fs-md">(X)</strong>
+                                            mark or any other mark outside the box
+                                            will invalidate the ballot paper for the vote of Board of Directors."
+                                        </li>
+                                    </ol>
+                                </div>
+    
+                                <!-- Ballot box directors -->
+                                <div class="ballot-box directors mt-4 flex-between gap-25  w-100">
+    
+                                    <div class="table-wrap">
+                                        <table class="w-100">
+                                            <thead class="w-100">
+                                                <tr class="w-100">
+                                                    <div class="flex-between w-100 tr-inner gap-30">
+                                                        <div class="w-50">
+                                                            <th class="text-wrap">Ballot No.</th>
+                                                            <th>Photo</th>
+                                                            <th class=""><img class="w-50 text-center" alt="director image"
+                                                                    src='{% static "images/check.png" %}'>
+                                                            </th>
+                                                            <th class="name-of">Name of the Candidates <br> with Membership
+                                                                Number
+                                                            </th>
+                                                        </div>
+    
+                                                        <div class="w-50">
+                                                            <th class=" text-wrap">Ballot No.</th>
+                                                            <th>Photo</th>
+                                                            <th class=""><img class="w-50 text-center"
+                                                                    src='{% static "images/check.png" %}' alt="director image">
+                                                            </th>
+                                                            <th class="name-of">Name of the Candidates <br> with Membership
+                                                                Number
+                                                            </th>
+                                                        </div>
+                                                    </div>
+                                                </tr>
+                                            </thead>
+    
+    
+                                            <tbody>
+                                                {% for row in data %}
+                                                <tr class="single vote opojet ">
+                                                    <div class="tr-inner flex-between gap-10">
+                                                        {% for dir in row.directors %}
+                                                        <div>
+                                                            <td class="title fw-bolder fs-xxl">{{row.counter}}</td>
+                                                            <td class="text-center candidates-pic-wrap fit-content"><img
+                                                                    class="candidates-pic"
+                                                                    src={{dir.image.url}}
+                                                                    alt="">
+                                                            </td>
+                                                            <td>
+                                                                <button type="button" class="table-box flex-center director-button" data-value="{{dir.id}}" title="vote">
+                                                                    <img class="w-75" src='{% static "images/vote (1).png" %}'
+                                                                        alt="director image">
+                                                                </button>
+                                                            </td>
+                                                            <td class="text-center pl-4">
+                                                                <div class="title fw-bolder  ">{{dir.first_name}} {{dir.last_name}}</div>
+                                                                <div class="post mt-1">{{dir.membership_num}}</div>
+                                                            </td>
+                                                        </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="mt-6">
+                                    <button disabled type="button" class="uppercase btn fw-bold white-color confirm-btn">Confirm</button>
+                                </div>
+                                <div class="w-100 flex-center text-center">
+                                    <div id="qrcode" class="print-qrcode w-100 mt-4" style="width: 150px;">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
+                            
+                            
+                            <!-- Footer -->
+                            <footer class="footer mt-50">
+                                <div class="text-center footer-text">
+                                    <div>Chairman</div>
+                                    Election Board 2025-2026
+                                </div>
+                                
+                                <div class="mt-2 flex-between footer-box">
+                                    <div class="box box-left">
+                                        
+                                    </div>
+                                    <div class="box box-midle">
+                                        
+                                    </div>
+                                    <div class="box box-right">
+                                        
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            
+            <div class="modal ">
+                <div class="modal-content flex-center flex-column">
+                    <button class="close-modal d-none">X</button>
+                    <div class="title  text-center fs-xxl">Are You Sure?</div>
+                    <div class=" w-100 flex-center">
+                        <button id="second-confirm" type="submit" class="btn fw-bold px-4 fs-xl white-color mt-4">Yes</button>
+                    </div>
+                </div>
+            </div>
+            
+        </form>
+
+
+
+
+
+
+<script>
+    // Maximum number of directors that can be selected
+
+    // Track selected director IDs
+    const selectedDirectors = new Set();
+
+    // Handle director button clicks
+    document.querySelectorAll('.director-button').forEach(button => {
+        button.addEventListener('click', function () {
+            const directorId = this.getAttribute('data-value');
+
+            // Toggle selection
+            selectedDirectors.add(directorId);
+            this.classList.add('selected');
+            // Add hidden input for this director
+            const hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = 'selected_director';
+            hiddenInput.value = directorId;
+            document.getElementById('selected-directors-container').appendChild(hiddenInput);
+            
+        });
+    });
+
+    // Handle president button clicks
+    document.querySelectorAll('.president-button').forEach(button => {
+        button.addEventListener('click', function () {
+            const presidentId = this.getAttribute('data-value');
+
+            // Update the hidden input with the selected president's ID
+            document.getElementById('selected-president').value = presidentId;
+            // Highlight the selected button
+
+        });
+    });
+</script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+
+<script>
+
+    document.getElementsByClassName('confirm-btn')[0].addEventListener('click', function () {
+    const president_id = document.getElementById('selected-president').value;
+    const selected_directors = Array.from(document.getElementsByName('selected_director')).map(input => input.value);
+    console.log('President ID: ', president_id);
+
+    const json_text = JSON.stringify({
+        president_id: president_id,
+        selected_directors: selected_directors,
+        user_id: '{{uuid}}'
+    });
+    console.log(json_text);
+
+
+    const qrCodeContainer = document.getElementById('qrcode');
+ // Clear any previous QR codes
+    new QRCode(qrCodeContainer, {
+        text: json_text, // Use the variable, not the string 'json_text'
+        width: 1000,
+        height: 1000
+    });
+});
+
+</script>
+
+
+
+
+
+
+        <script>
+
+
+            // // default reload off
+            // window.addEventListener("beforeunload", function (event) {
+            //     event.preventDefault(); // Prevent the default action
+            //     return undefined;
+            // });
+
+            // document.addEventListener("keydown", function (event) {
+            //     if (event.key === "F5" || (event.ctrlKey && event.key === "r")) {
+            //         event.preventDefault();
+            //     }
+            // });
+
+            // document.addEventListener("contextmenu", function (event) {
+            //     event.preventDefault();
+            // });
+
+            // window.addEventListener('afterprint', () => {
+            //     window.location.href = './dashboard.html';
+            // });
+
+
+            // const secondConfirm = document.getElementById('second-confirm');
+            // secondConfirm.addEventListener('click', function () {
+            //     // Create a new print window with the current page content
+            //     const printWindow = window.open('', '_blank');
+            //     printWindow.document.write(document.documentElement.outerHTML);
+            //     printWindow.document.close();
+
+            //     // Trigger print in the new window and close it immediately after
+            //     printWindow.print();
+            //     printWindow.close();
+
+            //     // Close the modal
+            //     const modal = document.querySelector('.modal');
+            //     modal.classList.remove('active');
+
+            //     // Redirect to the 'thanks.html' page
+            //     window.location.href = './thanks.html';
+            // });
+
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    </body>
+{% endblock %}

@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <body class="dashboard">
+        <header class="container">
+            <div>
+                <div class="grid-3 align-center justify-end">
+                    <div class="logo flex-center fw-bolder title">
+                        <img src="https://www.zentleman.com/wp-content/uploads/2017/07/unnamed.png" alt="">
+                    </div>
+
+                    <div class=" text-center">
+                        <h1 class="uppercase red-color   fw-extrabold">gulshan club</h1>
+                        <div class="title fw-bold dark ">Election For the Year 2024-2025</div>
+                    </div>
+
+                    <h1 class="title fs-xxxl text-right dashboard-text gray">Dashboard</h1>
+                </div>
+            </div>
+        </header>
+
+        <div class="container live-box-wrapper mt-4">
+            <div class="live-box"></div>
+        </div>
+
+        <main>
+            <section class="container">
+                <div class="cards mt-4">
+                    <div class="grid-3 gap-30">
+                        <div class="card orange-color fs-xxl title text-center border ">
+                            <img src="{% static 'images/voters.png' %}" alt="">
+                            <div class="fs-xxl">Total Voters</div>
+                            <p class="fs-xxl value">{{voters_count}}</p>
+                        </div>
+                        <div class="card orange-color fs-xxl title text-center border ">
+                            <img src="{% static 'images/slip.png' %}" alt="">
+                            <div class="fs-xxl">Slips Issued </div>
+                            <p class=" fs-xxl value">{{slips}}</p>
+                        </div>
+                        <div class="card orange-color fs-xxl title text-center border ">
+                            <img src="{% static './images/yes.png' %}" alt="">
+                            <div class="">Casted Votes</div>
+                            <p class="fs-xxl mt-1 value">{{voted}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- voter que -->
+                <div class="mt-50 voter-que">
+                    <div class="flex-between">
+                        <div class="title gray">Voter Que</div>
+                    </div>
+                    <div class="table-wrap mt-1">
+                        <table>
+                            <thead>
+                                <th>SL</th>
+                                <th>ID</th>
+                                <th>NAME</th>
+                                <th>PHOTO</th>
+                            </thead>
+
+                            <tbody>
+
+                                {% for voter in voted_voters %}
+                                <tr>
+                                    <td>{{forloop.counter}}</td>
+                                    <td>{{voter.id}}</td>
+                                    <td>{{voter.first_name}} {{voter.last_name}}</td>
+                                    <td>
+                                        <img class="img"
+                                            src="{{voter.image.url}}">
+                                        </img>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                               
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="mt-50 result-btn">
+                    {% if timer and not is_all_voted %}
+                    <button onclick="window.location.href='{% url 'code_out' %}'" class="btn  text-white fw-bold white-color">
+                        Enter code
+                    </button>
+                    {% else %}
+                    <button onclick="window.location.href='{% url 'count_vote' %}'" class="btn  text-white fw-bold white-color">
+                        Count Vote
+                    </button>
+                    <br>
+                    <button onclick="window.location.href='{% url 'omr_count_vote' %}'" class="btn  text-white fw-bold white-color">
+                        OMR Count Vote
+                    </button>
+                    
+                    {% endif %}
+                </div>
+            </section>
+        </main>
+
+
+        <div class="modal">
+            <div class="modal-content">
+                <button class="close-modal">
+                    <i class="ri-close-line"></i>
+                </button>
+
+            </div>
+        </div>
+
+        
+        
+    </body>
+    {% endblock %}

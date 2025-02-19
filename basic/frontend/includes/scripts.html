@@ -1,0 +1,90 @@
+
+{% load static %}
+<script src="{% static 'app.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+
+    // // default reload off
+    // window.addEventListener("beforeunload", function (event) {
+    //     event.preventDefault(); // Prevent the default action
+    //     return undefined;
+    // });
+
+    // document.addEventListener("keydown", function (event) {
+    //     if (event.key === "F5" || (event.ctrlKey && event.key === "r")) {
+    //         event.preventDefault();
+    //     }
+    // });
+
+    // document.addEventListener("contextmenu", function (event) {
+    //     event.preventDefault();
+    // });
+
+    
+    // window.addEventListener('afterprint', () => {
+    //     window.location.href = '{% static "./dashboard.html" %}';
+    // });
+
+
+
+
+    const secondConfirm = document.getElementById('second-confirm');
+    secondConfirm.addEventListener('click', function () {
+        // Create a new print window with the current page content
+        const printWindow = window.open('', '_blank');
+        // Close the modal
+        const modal = document.querySelector('.modal');
+        modal.classList.remove('active');
+        // Continue
+        printWindow.document.write(document.documentElement.outerHTML);
+        printWindow.document.close();
+
+        // Trigger print in the new window and close it immediately after
+        printWindow.print();
+        printWindow.close();
+
+
+    //     // Redirect to the 'thanks.html' page
+        // window.location.href = '{% url "dashboard" %}';
+    });
+
+
+
+
+
+
+
+    // window.addEventListener('afterprint', () => {
+    //             window.location.href = "{% static './dashboard.html' %}";
+    //         });
+
+
+    // const secondConfirm = document.getElementById('second-confirm');
+    // secondConfirm.addEventListener('click', function () {
+    //     // Create a new print window with the current page content
+    //     const printWindow = window.open('', '_blank');
+    //     printWindow.document.write(document.documentElement.outerHTML);
+    //     printWindow.document.close();
+
+    //     // Trigger print in the new window and close it immediately after
+    //     printWindow.print();
+    //     printWindow.close();
+
+    //     // Close the modal
+    //     const modal = document.querySelector('.modal');
+    //     modal.classList.remove('active');
+
+    //     // Redirect to the 'thanks.html' page
+    //     window.location.href = '{% static "./thanks.html" %}';
+    // });
+
+
+
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+</html>
+{% load sweetify %}
+{% sweetify %}
