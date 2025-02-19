@@ -42,7 +42,7 @@ class Voter(models.Model):
     # position = models.ForeignKey('Position', on_delete=models.CASCADE)
     first_name = models.CharField(max_length=50, null=True, blank=True)
     last_name = models.CharField(max_length=50, null=True, blank=True)
-    image = models.ImageField(blank=False, null=True)
+    image = models.ImageField(blank=True, null=True)
     user_id = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True, to_field="uuid")
     president_vote = models.CharField(unique=False, null=True, blank=True, max_length=255)
     directors_vote = models.JSONField(null=True, blank=True, default=list)
