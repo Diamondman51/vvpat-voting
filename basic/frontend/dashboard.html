@@ -67,9 +67,15 @@
                                     <td>{{voter.id}}</td>
                                     <td>{{voter.first_name}} {{voter.last_name}}</td>
                                     <td>
+                                    {% if voter.image.url %}
                                         <img class="img"
                                             src="{{voter.image.url}}">
                                         </img>
+                                    {% else %}
+                                        <img class="img"
+                                            src="{{voter.image.url}}">
+                                        </img>
+                                    {% endif %}
                                     </td>
                                 </tr>
                                 {% endfor %}
