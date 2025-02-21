@@ -57,3 +57,30 @@ p = P()
 p.a = 1
 
 print(p.a)
+
+
+import asyncio
+import time
+
+async def delayed_function():
+    await asyncio.sleep(5)  # Wait for 2 seconds
+    print("Executed after 5 seconds")
+
+
+async def t2():
+    print("Executed after 0 seconds")
+
+
+async def test():
+    await asyncio.sleep(3)   
+
+
+async def main2():
+    await asyncio.sleep(4)
+    print('Executed after 4 seconds')
+
+
+async def main():
+    await asyncio.gather(delayed_function(), test(), t2(), main2())
+
+asyncio.run(main())  # Runs the async function

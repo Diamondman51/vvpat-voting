@@ -168,5 +168,5 @@ async function updateVotes() {
 // When the page reloads
 document.addEventListener("DOMContentLoaded", function () {
   updateVotes();
-  setInterval(changeVotesAndSort, 3500); // Change and sort votes every 3.5 seconds
+  // setInterval(changeVotesAndSort, 3500); // Change and sort votes every 3.5 seconds
 });

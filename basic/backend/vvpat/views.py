@@ -5,7 +5,7 @@ from django.core.cache import cache
 from hashlib import sha256
 from typing import Union
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.views import View
 from django.template.response import TemplateResponse
 
@@ -17,7 +17,7 @@ from celery import shared_task
 
 
 class CodeView(View):
-    cache.set('counter', 0, None)
+    cache.set('counter', 1, None)
     def get(self, request,) -> TemplateResponse:
         form = CustomTextWidgetForm()
         context = {
@@ -54,7 +54,7 @@ class CodeView(View):
                     'qrcode': str(uuid),
                 }
                 sweetify.success(request, 'Your operation was successful!', timer=1000)
-                cache.incr("counter", 1)                
+                cache.incr("counter", 1)
                 return TemplateResponse(request, "outputPrint.html", context)
 
             else:
@@ -64,7 +64,6 @@ class CodeView(View):
         except User.DoesNotExist or Voter.DoesNotExist:
             sweetify.error(request, 'Can not find the Voter')
             return redirect("code_out")
-
 
 
 class WelcomeView(View):
@@ -167,12 +166,13 @@ class ApplyVoteView(View):
                 print("Selected President ID:", selected_president_id)
                 print("Selected Director IDs:", selected_director_ids)
                 sweetify.success(request, f"Dear {voter.first_name} {voter.last_name} your vote has been counted", timer=3000)
-                return redirect('dashboard')
+                return TemplateResponse(request, 'thanks.html')
             else:
                 sweetify.info(request, f"Dear {voter.first_name} {voter.last_name} you have voted, that is why your vote UNCOUNTED")
                 return redirect('dashboard')
         except Exception as e:
             print("Error handled: ", e)
+            sweetify.error(request, f"An error occurred: {e}", timer=3000)
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
@@ -240,6 +240,7 @@ class ResetView(View):
                 president.omr_votes.clear()
                 president.save()
             sweetify.success(request, "All votes have been reset", timer=3000)
+            cache.set('counter', 0)
             return redirect('dashboard')
         else:
             sweetify.error(request, "You do not have permission to perform this action", timer=3000)

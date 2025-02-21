@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Thanks</title>
-        <link rel="stylesheet" href="./css/style.css">
-    </head>
-
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
     <body class="thanks">
         <header class="container">
             <div class="center text-center ">
@@ -21,11 +14,15 @@
             <section>
                 <div class="container">
                     <div class=" w-100 flex-center w ">
-                        <img class="w-25" src="images/thanks.gif" alt="">
+                        <img class="w-25" src="{% static 'images/thanks.gif' %}" alt="">
                     </div>
                 </div>
             </section>
         </main>
     </body>
-
-</html>
+    <script>
+        setTimeout(() => {
+            window.location.href = "{% url 'dashboard' %}";
+        }, 5000);
+    </script>
+{% endblock %}
