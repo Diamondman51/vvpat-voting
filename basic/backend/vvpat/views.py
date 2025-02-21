@@ -17,7 +17,7 @@ from celery import shared_task
 
 
 class CodeView(View):
-    cache.set('counter', 1, None)
+    cache.set('counter', 0, None)
     def get(self, request,) -> TemplateResponse:
         form = CustomTextWidgetForm()
         context = {
@@ -45,7 +45,7 @@ class CodeView(View):
                     sweetify.info(request, f'Dear {voter.first_name} {voter.last_name}, you have voted!!!', timer=3000)
                     return redirect('dashboard')
                 BOOTHS = cache.get("BOOTHS")
-                booth = cache.get('counter') % BOOTHS
+                booth = (cache.get('counter') + 1) % BOOTHS
 
                 if not booth:
                     booth = BOOTHS
@@ -54,7 +54,6 @@ class CodeView(View):
                     'qrcode': str(uuid),
                 }
                 sweetify.success(request, 'Your operation was successful!', timer=1000)
-                cache.incr("counter", 1)
                 return TemplateResponse(request, "outputPrint.html", context)
 
             else:
@@ -166,6 +165,7 @@ class ApplyVoteView(View):
                 print("Selected President ID:", selected_president_id)
                 print("Selected Director IDs:", selected_director_ids)
                 sweetify.success(request, f"Dear {voter.first_name} {voter.last_name} your vote has been counted", timer=3000)
+                cache.incr("counter", 1)
                 return TemplateResponse(request, 'thanks.html')
             else:
                 sweetify.info(request, f"Dear {voter.first_name} {voter.last_name} you have voted, that is why your vote UNCOUNTED")
@@ -182,9 +182,13 @@ class SetQBooths(View):
     
     def post(self, request) -> TemplateResponse:
         booth = request.POST.get("booth")
+        election = request.POST.get("election")
+        year = request.POST.get("year")
         try:
             cache.set('BOOTHS', int(booth), 60*60*24)
             cache.set('timer', True, 60*60*18)
+            cache.set('election', election)
+            cache.set('year', year)
             print("Cache after set", cache.get("timer"))
             set_timer.apply_async(countdown=60*60*18)
             return redirect("code_out")
