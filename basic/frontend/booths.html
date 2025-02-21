@@ -29,9 +29,9 @@
 <form action="{% url 'set_booth' %}" method="post">
         {% csrf_token %}
         <div class="my_input" style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 10px; padding: 5% 20% 0 20%; height: 100%;">
-            <input type="number" class="form-control" name="booth" placeholder="Write the numbers of BOOTHS. Example: 5">
-            <input type="text" class="form-control" name="election" placeholder="Enter election date. Example: 20 December, 2025">
-            <input type="text" class="form-control" name="year" placeholder="For years. Example: 2024-2025">
+            <input type="number" class="form-control" name="booth" placeholder="Write the numbers of BOOTHS. Example: 5" required>
+            <input type="text" class="form-control" name="election" placeholder="Enter election date. Example: 20 December, 2025" required>
+            <input type="text" class="form-control" name="year" placeholder="For years. Example: 2024-2025" required>
             <button class="btn btn-primary" style="align-self: flex-end; padding: 5px 25px;">Set</button>
         </div>
     </div>
