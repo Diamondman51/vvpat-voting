@@ -45,7 +45,11 @@ class CodeView(View):
                     sweetify.info(request, f'Dear {voter.first_name} {voter.last_name}, you have voted!!!', timer=3000)
                     return redirect('dashboard')
                 BOOTHS = cache.get("BOOTHS")
-                booth = (cache.get('counter') + 1) % BOOTHS
+                try:
+                    booth = (cache.get('counter') + 1) % BOOTHS
+                except:
+                    cache.set('counter', 0)
+                    self.post(request)
 
                 if not booth:
                     booth = BOOTHS
