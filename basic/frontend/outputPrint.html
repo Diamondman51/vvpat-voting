@@ -81,23 +81,23 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
         <script>
-                    document.addEventListener("DOMContentLoaded", function () {
-                        setTimeout(function () {
-                            // Create a new print window with the current page content
-                            const printWindow = window.open('', '_blank');
-                            // Close the modal
-                            // const modal = document.querySelector('.modal');`
-                            // modal.classList.remove('active');
-                            // Continue
-                            printWindow.document.write(document.documentElement.outerHTML);
-                            printWindow.document.close();
+                    // document.addEventListener("DOMContentLoaded", function () {
+                    //     setTimeout(function () {
+                    //         // Create a new print window with the current page content
+                    //         const printWindow = window.open('', '_blank');
+                    //         // Close the modal
+                    //         // const modal = document.querySelector('.modal');`
+                    //         // modal.classList.remove('active');
+                    //         // Continue
+                    //         printWindow.document.write(document.documentElement.outerHTML);
+                    //         printWindow.document.close();
 
-                            // Trigger print in the new window and close it immediately after
-                            printWindow.print();
-                            printWindow.close();
-                        }, 2000);
-                        }
-                        );
+                    //         // Trigger print in the new window and close it immediately after
+                    //         printWindow.print();
+                    //         printWindow.close();
+                    //     }, 2000);
+                    //     }
+                    //     );
         </script>
 </body>
 
