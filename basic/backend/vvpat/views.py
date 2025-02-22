@@ -47,12 +47,12 @@ class CodeView(View):
                 BOOTHS = cache.get("BOOTHS")
                 try:
                     booth = (cache.get('counter') + 1) % BOOTHS
+                    if not booth:
+                        booth = BOOTHS
                 except:
                     cache.set('counter', 0)
                     self.post(request)
 
-                if not booth:
-                    booth = BOOTHS
                 context = {
                     'booth': booth,
                     'qrcode': str(uuid),
