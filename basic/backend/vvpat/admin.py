@@ -41,7 +41,7 @@ class PresidentAdmin(admin.ModelAdmin):
 
 
 class VoterAdmin(admin.ModelAdmin):
-    list_display = ('id', 'first_name', 'last_name', 'uuid', 'membership_num')
+    list_display = ('id', 'first_name', 'last_name', 'uuid', 'membership_num', 'is_voted')
     
     def membership_num(self, obj):
         return obj.user_id.membership_num
