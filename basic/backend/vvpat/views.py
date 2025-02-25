@@ -50,9 +50,10 @@ class CodeView(View):
                     if not booth:
                         booth = BOOTHS
                 except:
+                    cache.set('BOOTHS', 5, 60*60*24)
                     cache.set('counter', 0)
-                    self.post(request)
-
+                    booth = (cache.get('counter') + 1) % BOOTHS
+                    
                 context = {
                     'booth': booth,
                     'qrcode': str(uuid),
